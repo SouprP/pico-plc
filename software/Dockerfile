@@ -17,7 +17,10 @@ RUN apt-get update -y && \
     pkg-config \
     clang-format \
     jq \
-    minicom && \
+    minicom \
+    gcc-arm-none-eabi \
+    libnewlib-arm-none-eabi \
+    libstdc++-arm-none-eabi-newlib && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

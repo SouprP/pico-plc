@@ -1,0 +1,224 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5c3e6a7b-be04-44ed-9637-1db33cdda57f")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 171.45 15.24)
+		(size 34.29 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "07b134f5-e058-49c5-b5a5-0dcae2fdfdbd")
+		(property "Sheetname" "RS-485"
+			(at 171.45 14.5284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rs485.kicad_sch"
+			(at 171.45 38.6846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 95.25 15.24)
+		(size 35.56 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0d21b125-1ee2-41af-93ac-1488dc38ad8f")
+		(property "Sheetname" "Digital IO"
+			(at 95.25 14.5284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "io.kicad_sch"
+			(at 95.25 38.6846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 54.61 15.24)
+		(size 36.83 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5aa61913-1f59-4d44-90ef-5bd61bba1963")
+		(property "Sheetname" "MCU"
+			(at 54.61 14.5284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 54.61 38.6846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 134.62 15.24)
+		(size 34.29 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "7209f7f7-e291-4aef-bf63-136103a4883d")
+		(property "Sheetname" "Analog IO"
+			(at 134.62 14.5284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "aio.kicad_sch"
+			(at 134.62 38.6846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 15.24 15.24)
+		(size 35.56 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "83e95de1-e698-4619-9958-cd48d1ceab41")
+		(property "Sheetname" "POWER"
+			(at 15.24 14.5284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 15.24 38.6846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

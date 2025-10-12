@@ -2,7 +2,7 @@
 
 # Pico-SDK setup
 set(PICO_PLATFORM rp2350)
-set(PICO_BOARD pico2)
+set(PICO_BOARD pico2_w)
 include($ENV{PICO_SDK_PATH}/pico_sdk_init.cmake)
 
 # Project setup
@@ -23,6 +23,7 @@ target_link_libraries(pico_plc
         pico_stdlib
         pico_multicore
         hardware_i2c
+        pico_cyw43_arch_none
 
         pico_modbus
 )

@@ -39,7 +39,7 @@ public:
 
     void on_debug(const std::function<void(const uint8_t&, const modbus_frame_t&)>& callback);
     void on_error(const std::function<void(const uint8_t&, const modbus_frame_t&)>& callback);
-    void on_message(const std::function<void(const uint8_t&, const modbus_frame_t&)>& callback);
+    void on_message(const std::function<void(const uint8_t &, const modbus_frame_t &)> &callback);
 };
 
 #endif //PICO_PLC_MD_BASE_H

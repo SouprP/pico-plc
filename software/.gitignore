@@ -1,2 +1,5 @@
 ﻿build
 .idea
+
+cmake-windows
+cmake-release

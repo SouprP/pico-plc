@@ -1,4 +1,8 @@
 if(NOT TARGET pico_modbus)
+#    set(PICO_PLATFORM rp2350)
+#    set(PICO_BOARD pico2_w)
+#    include($ENV{PICO_SDK_PATH}/pico_sdk_init.cmake)
+#    message($ENV{PICO_SDK_PATH})
     set(SRC_FILES
             master/master.cpp
             common/md_common.cpp
@@ -18,7 +22,9 @@ if(NOT TARGET pico_modbus)
 
     target_link_libraries(pico_modbus PUBLIC
             pico_stdlib
-            hardware_uart
+            pico_rand
+#            hardware_uart
+#            hardware_i2c
     )
 
     target_include_directories(pico_modbus PUBLIC

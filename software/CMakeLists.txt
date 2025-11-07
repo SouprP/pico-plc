@@ -1,5 +1,8 @@
 ﻿cmake_minimum_required(VERSION 3.31.6)
 
+# Variables
+set(DEBUG_BUILD 0)
+
 # Pico-SDK setup
 set(PICO_PLATFORM rp2350)
 set(PICO_BOARD pico2_w)
@@ -21,6 +24,7 @@ add_subdirectory(lib)
 
 target_link_libraries(pico_plc
         pico_stdlib
+#        pico_rand
         pico_multicore
         hardware_i2c
         pico_cyw43_arch_none
@@ -35,6 +39,13 @@ pico_enable_stdio_uart(pico_plc 0)
 pico_add_extra_outputs(pico_plc)
 
 # pico-tool auto-flash command
-add_custom_command(TARGET pico_plc POST_BUILD
-        COMMAND picotool load ${CMAKE_PROJECT_NAME}.uf2 || true
-)
+if (NOT DEBUG_BUILD)
+    add_custom_command(TARGET pico_plc POST_BUILD
+    #        COMMAND picotool info || true
+            COMMAND picotool reboot -f -u || true
+            COMMAND ${CMAKE_COMMAND} -E sleep 1
+            COMMAND picotool load ${CMAKE_PROJECT_NAME}.uf2 ||  true
+            COMMAND ${CMAKE_COMMAND} -E sleep 1
+            COMMAND picotool reboot || true
+    )
+endif ()

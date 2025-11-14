@@ -16,12 +16,16 @@ void ModbusBase::on_message(const std::function<void(const uint8_t&, const modbu
     message_callback = callback;
 }
 
-void ModbusBase::read(modbus_frame_t *frame, bool timeout) {
+void ModbusBase::read(modbus_frame_t *frame, bool timeout) const {
     // auto time = get_absolute_time();
 
     // get_rand_32() % 100;
-    uint8_t data = get_rand_32() % 100;
-    message_callback(data, *frame);
+    // uint8_t data = get_rand_32() % 100;
+    // message_callback(data, *frame);
+}
+
+void ModbusBase::write(modbus_frame_t* frame) {
+
 }
 
 

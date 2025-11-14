@@ -34,8 +34,8 @@ public:
     // probably a bad idea
     // void supported_functions()
 
-    void write(modbus_frame_t* frame);
-    void read(modbus_frame_t* frame, bool timeout);
+    static void write(modbus_frame_t* frame);
+    void read(modbus_frame_t* frame, bool timeout) const;
 
     void on_debug(const std::function<void(const uint8_t&, const modbus_frame_t&)>& callback);
     void on_error(const std::function<void(const uint8_t&, const modbus_frame_t&)>& callback);

@@ -22,9 +22,12 @@ if(NOT TARGET pico_modbus)
 
     target_link_libraries(pico_modbus PUBLIC
             pico_stdlib
-            pico_rand
-#            hardware_uart
-#            hardware_i2c
+            pico_multicore
+            hardware_uart
+            hardware_timer
+            hardware_irq
+
+            pico_utils
     )
 
     target_include_directories(pico_modbus PUBLIC

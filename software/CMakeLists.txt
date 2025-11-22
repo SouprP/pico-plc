@@ -1,7 +1,7 @@
 ﻿cmake_minimum_required(VERSION 3.31.6)
 
 # Variables
-set(DEBUG_BUILD 0)
+set(DEBUG_BUILD 1)
 
 # Pico-SDK setup
 set(PICO_PLATFORM rp2350)
@@ -19,20 +19,21 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 # Executables for all projects
-add_executable(pico_plc src/main.cpp)
-add_executable(master_plc src/master.cpp)
-add_executable(slave_plc src/slave.cpp)
+add_executable(pico_plc src/main.cpp src/defines.h)
+add_executable(master_plc src/master.cpp src/defines.h)
+add_executable(slave_plc src/slave.cpp src/defines.h)
 
 # Add all custom libraries
 add_subdirectory(lib)
 
 set(LIBS
         pico_stdlib
-        #        pico_rand
+        pico_rand
         pico_multicore
         hardware_i2c
         pico_cyw43_arch_none
 
+        pico_utils
         pico_modbus
 )
 
@@ -54,7 +55,7 @@ pico_add_extra_outputs(slave_plc)
 pico_add_extra_outputs(pico_plc)
 
 # pico-tool auto-flash command
-set(ALL_BUILD 1)
+set(ALL_BUILD 0)
 set(SLAVE_BUILD 1)
 set(MASTER_BUILD 1)
 
@@ -72,6 +73,9 @@ set(MASTER_ID 4A8F1AAABAD7DE92)
 #            COMMAND picotool reboot || true
 #    )
 #endif ()
+
+# All information on how these commands work can be found here:
+# https://github.com/raspberrypi/picotool
 
 # Master .uf2 build load
 if (NOT DEBUG_BUILD AND (${MASTER_BUILD} OR ${ALL_BUILD}))

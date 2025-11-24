@@ -5,11 +5,14 @@ if(NOT TARGET pico_utils)
 #    message($ENV{PICO_SDK_PATH})
     set(SRC_FILES
             common_utils.cpp
+            custom_dac.cpp
+            
 
     )
 
     set(INC_FILES
             common_utils.h
+            custom_dac.h
     )
 
     add_library(pico_utils ${SRC_FILES} ${INC_FILES})
@@ -20,6 +23,8 @@ if(NOT TARGET pico_utils)
             pico_multicore
             hardware_i2c
             pico_cyw43_arch_none
+
+            hardware_pwm
     )
 
     target_include_directories(pico_utils PUBLIC

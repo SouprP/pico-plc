@@ -1,8 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.31.6)
 
-# Variables
-set(DEBUG_BUILD 1)
-
 # Pico-SDK setup
 set(PICO_PLATFORM rp2350)
 set(PICO_BOARD pico2_w)
@@ -32,6 +29,7 @@ set(LIBS
         pico_multicore
         hardware_i2c
         pico_cyw43_arch_none
+        hardware_pwm
 
         pico_utils
         pico_modbus
@@ -55,6 +53,7 @@ pico_add_extra_outputs(slave_plc)
 pico_add_extra_outputs(pico_plc)
 
 # pico-tool auto-flash command
+set(DEBUG_BUILD 1)
 set(ALL_BUILD 0)
 set(SLAVE_BUILD 1)
 set(MASTER_BUILD 1)
@@ -95,10 +94,9 @@ if (NOT DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
     )
 endif ()
 
-## Slave .uf2 build load
-#if (NOT DEBUG_BUILD AND ${ALL_BUILD})
-#    add_custom_command(TARGET pico_plc POST_BUILD
-##            COMMAND picotool load -f --ser ${SLAVE_ID} -x slave_plc.uf2
-#            COMMAND ${CMAKE_COMMAND} -E sleep 0.1
-#    )
-#endif ()
+# Test .uf2 file
+if (DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
+    add_custom_command(TARGET slave_plc POST_BUILD
+            COMMAND picotool load -f --ser ${SLAVE_ID} -x pico_plc.uf2
+    )
+endif ()

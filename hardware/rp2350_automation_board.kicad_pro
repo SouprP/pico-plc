@@ -657,12 +657,12 @@
           "show": false
         }
       ],
-      "filter_string": "R",
+      "filter_string": "c",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",
       "sort_asc": false,
-      "sort_field": "Value"
+      "sort_field": "${QUANTITY}"
     },
     "connection_grid_size": 50.0,
     "drawing": {

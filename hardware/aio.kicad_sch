@@ -3052,12 +3052,6 @@
 		(uuid "dcea0631-3450-4c7f-8823-d257fed53edf")
 	)
 	(junction
-		(at 133.35 35.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "df826a50-1ba7-4b34-8ed0-29888730c0c0")
-	)
-	(junction
 		(at 284.48 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3093,7 +3087,7 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 35.56) (xy 133.35 35.56)
+			(xy 130.81 35.56) (xy 138.43 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3573,7 +3567,7 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 38.1) (xy 133.35 38.1)
+			(xy 130.81 38.1) (xy 132.08 38.1)
 		)
 		(stroke
 			(width 0)
@@ -3630,16 +3624,6 @@
 			(type default)
 		)
 		(uuid "782f3608-1680-4b4b-b952-d886a188bd0e")
-	)
-	(wire
-		(pts
-			(xy 133.35 35.56) (xy 138.43 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79038f8c-ae67-4f49-8725-1a8182732719")
 	)
 	(wire
 		(pts
@@ -3910,16 +3894,6 @@
 			(type default)
 		)
 		(uuid "babc4d22-9de2-47ea-912f-63447515dbb7")
-	)
-	(wire
-		(pts
-			(xy 133.35 38.1) (xy 133.35 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bbaa3c59-676c-431c-a3d3-450e4e0d7603")
 	)
 	(wire
 		(pts
@@ -4314,6 +4288,28 @@
 		(uuid "12086e36-4f90-4f89-b04c-b797320bacb5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 145.4065 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "DAC_LDAC"
+		(shape input)
+		(at 132.08 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "28900ffe-338d-4a8f-bfc3-70289962b367")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 144.3181 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)

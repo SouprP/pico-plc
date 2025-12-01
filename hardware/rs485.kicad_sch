@@ -5,37 +5,36 @@
 	(uuid "4a1e5f33-3762-40d2-80f9-0ff472a10bed")
 	(paper "A4")
 	(lib_symbols
-		(symbol "EasyEDA:KF301-5.0-2P"
+		(symbol "Device:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 6.35 0)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "KF301-5.0-2P"
-				(at 0 -6.35 0)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" "EasyEDA:CONN-TH_P5.00_KF301-5.0-2P"
-				(at 0 -8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/New-Quadratic-Unclassified-Data_Cixi-Kefa-Elec-KF301-5-0-2P_C474881.html"
-				(at 0 -11.43 0)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -43,7 +42,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -52,8 +51,8 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC Part" "C474881"
-				(at 0 -13.97 0)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -61,33 +60,55 @@
 					(hide yes)
 				)
 			)
-			(symbol "KF301-5.0-2P_0_1"
-				(rectangle
-					(start -2.54 3.81)
-					(end 2.54 -3.81)
-					(stroke
-						(width 0)
-						(type default)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type background)
-					)
+					(hide yes)
 				)
-				(circle
-					(center -1.27 2.54)
-					(radius 0.38)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
 					(stroke
-						(width 0)
+						(width 0.508)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(pin unspecified line
-					(at -5.08 1.27 0)
-					(length 2.54)
-					(name "1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -102,10 +123,10 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at -5.08 -1.27 0)
-					(length 2.54)
-					(name "2"
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -123,37 +144,34 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "EasyEDA:MAX3485AEASA+T"
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 7.62 0)
+			(property "Reference" "R"
+				(at 2.032 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "MAX3485AEASA+T"
-				(at 0 -10.16 0)
+			(property "Value" "R"
+				(at 0 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "EasyEDA:SO-8_L4.9-W3.9-P1.27-LS5.9-BL"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_Maxim-Integrated_MAX3485AEASA-T_Maxim-Integrated-MAX3485AEASA-T_C94609.html"
-				(at 0 -15.24 0)
+			(property "Footprint" ""
+				(at -1.778 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -161,7 +179,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -170,8 +188,8 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC Part" "C94609"
-				(at 0 -17.78 0)
+			(property "Description" "Resistor"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -179,33 +197,42 @@
 					(hide yes)
 				)
 			)
-			(symbol "MAX3485AEASA+T_0_1"
-				(rectangle
-					(start -7.62 5.08)
-					(end 7.62 -7.62)
-					(stroke
-						(width 0)
-						(type default)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type background)
-					)
+					(hide yes)
 				)
-				(circle
-					(center -6.35 3.81)
-					(radius 0.38)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(pin unspecified line
-					(at -10.16 2.54 0)
-					(length 2.54)
-					(name "RO"
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -220,9 +247,501 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at -10.16 0 0)
-					(length 2.54)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Samacsys:39880-0303"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 16.51 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "39880-0303"
+				(at 16.51 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "Samacsys:398800303"
+				(at 16.51 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/398800303"
+				(at 16.51 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fixed Terminal Blocks 3 CKT TERM. BLOCK 5.08mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "10.3"
+				(at 16.51 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "538-39880-0303"
+				(at 16.51 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Molex/39880-0303?qs=nJOu%252Bf4e%252BhtlXsDsBQBzPA%3D%3D"
+				(at 16.51 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Molex"
+				(at 16.51 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "39880-0303"
+				(at 16.51 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "39880-0303_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 15.24 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Samacsys:CDSOT23-SM712"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 16.51 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "CDSOT23-SM712"
+				(at 16.51 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "Samacsys:SOT95P230X117-3N"
+				(at 16.51 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 16.51 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "TVS Diode Dual Bi-Dir 7/12V 30KV SOT23 Bourns CDSOT23-SM712 Dual Bi-Directional TVS Diode, 400W peak, 3-Pin SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1.17"
+				(at 16.51 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "652-CDSOT23-SM712"
+				(at 16.51 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Bourns/CDSOT23-SM712?qs=FuI%252BOVLl4%2FLTY%2FGQ265RLA%3D%3D"
+				(at 16.51 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Bourns"
+				(at 16.51 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "CDSOT23-SM712"
+				(at 16.51 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "CDSOT23-SM712_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 15.24 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Samacsys:SN65HVD75DGKR"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IC"
+				(at 21.59 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "SN65HVD75DGKR"
+				(at 21.59 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "Samacsys:SOP65P490X110-8N"
+				(at 21.59 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn65hvd75.pdf"
+				(at 21.59 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "3.3-V half-duplex RS-485 transceiver with IEC ESD, 20 Mbps"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1.1"
+				(at 21.59 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "595-SN65HVD75DGKR"
+				(at 21.59 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/SN65HVD75DGKR?qs=E2%2FxqS9xjzrac0D8q%2FrjAA%3D%3D"
+				(at 21.59 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Texas Instruments"
+				(at 21.59 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "SN65HVD75DGKR"
+				(at 21.59 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "SN65HVD75DGKR_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 20.32 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 0 0 0)
+					(length 5.08)
+					(name "R"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -2.54 0)
+					(length 5.08)
 					(name "~{RE}"
 						(effects
 							(font
@@ -238,9 +757,9 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at -10.16 -2.54 0)
-					(length 2.54)
+				(pin input line
+					(at 0 -5.08 0)
+					(length 5.08)
 					(name "DE"
 						(effects
 							(font
@@ -256,10 +775,10 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at -10.16 -5.08 0)
-					(length 2.54)
-					(name "DI"
+				(pin input line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "D"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -274,9 +793,9 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at 10.16 2.54 180)
-					(length 2.54)
+				(pin power_in line
+					(at 25.4 0 180)
+					(length 5.08)
 					(name "VCC"
 						(effects
 							(font
@@ -292,9 +811,9 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at 10.16 0 180)
-					(length 2.54)
+				(pin bidirectional line
+					(at 25.4 -2.54 180)
+					(length 5.08)
 					(name "B"
 						(effects
 							(font
@@ -310,9 +829,9 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at 10.16 -2.54 180)
-					(length 2.54)
+				(pin bidirectional line
+					(at 25.4 -5.08 180)
+					(length 5.08)
 					(name "A"
 						(effects
 							(font
@@ -328,9 +847,9 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at 10.16 -5.08 180)
-					(length 2.54)
+				(pin power_in line
+					(at 25.4 -7.62 180)
+					(length 5.08)
 					(name "GND"
 						(effects
 							(font
@@ -576,31 +1095,163 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "0 ohm jumpers or 10K pullups\n(need to test, if need - datasheet)"
+		(exclude_from_sim no)
+		(at 32.766 57.658 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "15c9a4e1-47de-4a4f-82fe-4873dc30664e")
+	)
+	(text "TVS diode for protection"
+		(exclude_from_sim no)
+		(at 149.352 54.102 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "97c69a31-ecbd-4012-9529-3534c151a97b")
+	)
+	(junction
+		(at 165.1 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67e4bb70-1f50-46d2-927f-efb008c9d494")
+	)
+	(junction
+		(at 58.42 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e7b1791-7a29-4854-b96e-12427dd41e97")
+	)
+	(junction
+		(at 53.34 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "73435d6a-85ec-402b-9335-1a712e6131a1")
+	)
+	(junction
+		(at 91.44 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7a272569-bebb-4afc-978e-d05b11385034")
+	)
+	(junction
+		(at 119.38 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7c7e5a0f-4477-4557-bd50-0d57c989b5b3")
+	)
+	(junction
+		(at 119.38 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a3e9eff8-267b-4638-87d8-4cd2a3a8f558")
+	)
 	(junction
 		(at 54.61 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "efa9ad90-87f0-4f6d-b573-cc0db414d629")
 	)
-	(wire
-		(pts
-			(xy 52.07 46.99) (xy 54.61 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "056e0c69-40f1-4837-b91b-34b8313bf2fa")
+	(junction
+		(at 165.1 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f3803c38-710a-4a2d-81bc-257688e8b0b8")
 	)
 	(wire
 		(pts
-			(xy 142.24 48.26) (xy 148.59 48.26)
+			(xy 165.1 45.72) (xy 190.5 45.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "07f5334a-a85a-4582-a644-37a316858922")
+		(uuid "0d2b59e2-9c1c-43e0-96e7-2afc4bbb624d")
+	)
+	(wire
+		(pts
+			(xy 113.03 58.42) (xy 113.03 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0de4c034-25d8-445a-a784-3ffb29b675ae")
+	)
+	(wire
+		(pts
+			(xy 119.38 50.8) (xy 119.38 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1058cdec-d022-49f3-aa43-05e4466a64f9")
+	)
+	(wire
+		(pts
+			(xy 165.1 48.26) (xy 190.5 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b26b5d5-a061-4d04-87f1-bc234fd30fec")
+	)
+	(wire
+		(pts
+			(xy 58.42 48.26) (xy 58.42 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2371803f-d55b-4517-8845-bf5e8039edb2")
+	)
+	(wire
+		(pts
+			(xy 165.1 49.53) (xy 165.1 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29263934-db73-4b38-8ad1-081dc60d31bb")
+	)
+	(wire
+		(pts
+			(xy 119.38 35.56) (xy 119.38 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "337f8b16-6915-4c34-9f57-9d084c966d26")
+	)
+	(wire
+		(pts
+			(xy 113.03 35.56) (xy 113.03 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "365b9c0b-1a63-4538-a4b8-e77ef3af31dd")
+	)
+	(wire
+		(pts
+			(xy 165.1 44.45) (xy 165.1 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37efb149-4f83-45ed-9253-c07a74af32b3")
 	)
 	(wire
 		(pts
@@ -614,7 +1265,87 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 48.26) (xy 92.71 48.26)
+			(xy 91.44 38.1) (xy 91.44 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "507b06f3-fd3f-4beb-8758-327e601af48c")
+	)
+	(wire
+		(pts
+			(xy 119.38 35.56) (xy 165.1 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a12abdb-10da-48ce-bef9-f338e514b0e0")
+	)
+	(wire
+		(pts
+			(xy 113.03 48.26) (xy 87.63 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c1b1de0-55f0-4a18-903b-8675e73fc1a7")
+	)
+	(wire
+		(pts
+			(xy 113.03 45.72) (xy 87.63 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fd45062-2c2e-436e-82aa-182ca75c1747")
+	)
+	(wire
+		(pts
+			(xy 38.1 46.99) (xy 54.61 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61a960c2-23d9-41ef-8066-d0ff03439cd5")
+	)
+	(wire
+		(pts
+			(xy 38.1 50.8) (xy 62.23 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67ebf8df-499d-44d4-b1e7-595247853894")
+	)
+	(wire
+		(pts
+			(xy 165.1 48.26) (xy 165.1 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6eaa57fa-fba2-4da4-9bc0-93f367a11c31")
+	)
+	(wire
+		(pts
+			(xy 161.29 44.45) (xy 165.1 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a9af077-4655-4e89-b123-1ea927ab23fc")
+	)
+	(wire
+		(pts
+			(xy 113.03 58.42) (xy 119.38 58.42)
 		)
 		(stroke
 			(width 0)
@@ -624,17 +1355,17 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 43.18) (xy 62.23 43.18)
+			(xy 38.1 43.18) (xy 53.34 43.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b38a15cb-9cf1-466f-b6f9-40909dfd1557")
+		(uuid "a385b3d2-0313-495f-883a-8f898d3e0ceb")
 	)
 	(wire
 		(pts
-			(xy 86.36 53.34) (xy 86.36 50.8)
+			(xy 91.44 53.34) (xy 91.44 50.8)
 		)
 		(stroke
 			(width 0)
@@ -644,7 +1375,47 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 45.72) (xy 92.71 45.72)
+			(xy 161.29 49.53) (xy 165.1 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3f4454f-3722-4a42-9ede-3d0696d4a996")
+	)
+	(wire
+		(pts
+			(xy 187.96 53.34) (xy 187.96 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0062429-fbdb-4542-9e24-3e916351b0e4")
+	)
+	(wire
+		(pts
+			(xy 165.1 35.56) (xy 165.1 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0de113d-275b-4ffa-bb7e-2bbd3ec813fa")
+	)
+	(wire
+		(pts
+			(xy 187.96 50.8) (xy 190.5 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4b50645-6095-4456-bd2e-9a9785d9982c")
+	)
+	(wire
+		(pts
+			(xy 113.03 35.56) (xy 119.38 35.56)
 		)
 		(stroke
 			(width 0)
@@ -654,7 +1425,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 40.64) (xy 86.36 43.18)
+			(xy 91.44 29.21) (xy 91.44 38.1)
 		)
 		(stroke
 			(width 0)
@@ -674,17 +1445,17 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 45.72) (xy 148.59 45.72)
+			(xy 58.42 48.26) (xy 54.61 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "dcbf4cfb-d39f-458e-8f27-406b7345da3f")
+		(uuid "d61fd6ca-2dc5-4177-a990-13c873990ca5")
 	)
 	(wire
 		(pts
-			(xy 86.36 50.8) (xy 82.55 50.8)
+			(xy 91.44 50.8) (xy 87.63 50.8)
 		)
 		(stroke
 			(width 0)
@@ -694,13 +1465,33 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 48.26) (xy 54.61 48.26)
+			(xy 62.23 48.26) (xy 58.42 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e1432738-2de6-494a-a0ce-1cf37e4ba25d")
+	)
+	(wire
+		(pts
+			(xy 53.34 43.18) (xy 62.23 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5d24251-2a3d-4d9b-afc6-fc2f339e91d8")
+	)
+	(wire
+		(pts
+			(xy 119.38 58.42) (xy 165.1 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e63c75ff-890f-4c00-b566-fbfb9b564175")
 	)
 	(wire
 		(pts
@@ -714,17 +1505,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 50.8) (xy 62.23 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5135f2e-9d9f-42c8-9f2c-283b5f9355cb")
-	)
-	(wire
-		(pts
-			(xy 86.36 43.18) (xy 82.55 43.18)
+			(xy 91.44 43.18) (xy 87.63 43.18)
 		)
 		(stroke
 			(width 0)
@@ -732,9 +1513,29 @@
 		)
 		(uuid "fc1b7f81-57d8-4ded-9016-de813494b0d1")
 	)
-	(global_label "RS485_A"
-		(shape output)
-		(at 142.24 48.26 180)
+	(label "RS485-"
+		(at 181.61 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0259e82f-d8b0-4b5c-bc60-9afcf569f4e9")
+	)
+	(label "RS485+"
+		(at 181.61 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6ed1fe70-07ef-4689-86bd-2d290190fbcd")
+	)
+	(global_label "UART_TX"
+		(shape input)
+		(at 38.1 50.8 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -742,87 +1543,21 @@
 			)
 			(justify right)
 		)
-		(uuid "2c53a27f-9e7d-4726-a077-fe44cd02fea2")
+		(uuid "a94bc7e8-3643-4341-a059-023348458c87")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.0906 48.26 0)
+			(at 27.3134 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RS485_B"
-		(shape output)
-		(at 142.24 45.72 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "3eea4810-89b8-4eb2-a279-48de6f308e04")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.9092 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RS485_B"
-		(shape input)
-		(at 92.71 45.72 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6a3fbf27-9803-4e0d-b45a-dc5aab6f4f44")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 104.0408 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RS485_A"
-		(shape input)
-		(at 92.71 48.26 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "946e7983-06ad-4548-b791-7d4912866cd8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 103.8594 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
 	)
 	(global_label "RS485_MODE"
 		(shape input)
-		(at 52.07 46.99 180)
+		(at 38.1 46.99 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -830,9 +1565,9 @@
 			)
 			(justify right)
 		)
-		(uuid "db565e92-0a79-485b-95f7-287c8e8de14e")
+		(uuid "bae9eec1-2f0d-4663-8f25-45d7b62d09cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 36.8083 46.99 0)
+			(at 22.8383 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -844,7 +1579,7 @@
 	)
 	(global_label "UART_RX"
 		(shape input)
-		(at 46.99 43.18 180)
+		(at 38.1 43.18 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -852,31 +1587,9 @@
 			)
 			(justify right)
 		)
-		(uuid "ecd64a59-6b60-4646-92c7-da7cce90c665")
+		(uuid "beec7888-a138-429b-a85f-e96f3bbdff49")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 35.901 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "UART_TX"
-		(shape output)
-		(at 45.72 50.8 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "fc16293a-3d8a-4fe9-882b-7e2001b78647")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 34.9334 50.8 0)
+			(at 27.011 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -887,8 +1600,78 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 119.38 46.99 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0c3487ad-c2b7-472f-a079-9e7a5a572c71")
+		(property "Reference" "R35"
+			(at 121.92 45.7199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "120R"
+			(at 121.92 48.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+			(at 117.602 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 119.38 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 119.38 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "df81e0b4-90bc-4e29-abce-882fa4aeccd5")
+		)
+		(pin "1"
+			(uuid "3a2f5f0a-6bb6-4805-abe3-b61fa11eb374")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "R35")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
-		(at 86.36 40.64 0)
+		(at 91.44 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -896,8 +1679,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "108d6154-5a95-432c-bb2a-915d510bd71b")
-		(property "Reference" "#PWR02"
-			(at 86.36 44.45 0)
+		(property "Reference" "#PWR063"
+			(at 91.44 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -906,7 +1689,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 86.36 35.56 0)
+			(at 91.44 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -914,7 +1697,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 86.36 40.64 0)
+			(at 91.44 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -923,7 +1706,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 86.36 40.64 0)
+			(at 91.44 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -932,7 +1715,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 86.36 40.64 0)
+			(at 91.44 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -946,40 +1729,60 @@
 		(instances
 			(project ""
 				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
-					(reference "#PWR02")
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "EasyEDA:MAX3485AEASA+T")
-		(at 72.39 45.72 0)
+		(lib_id "Samacsys:CDSOT23-SM712")
+		(at 161.29 49.53 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a6675ec9-553d-4b0a-a768-c766b1ce8f1a")
-		(property "Reference" "U13"
-			(at 72.39 35.56 0)
+		(uuid "14b1248d-fdf4-4184-bfc4-03a3b9336a18")
+		(property "Reference" "D8"
+			(at 151.13 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "MAX3485AEASA+T"
-			(at 72.39 38.1 0)
+		(property "Value" "CDSOT23-SM712"
+			(at 151.13 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EasyEDA:SO-8_L4.9-W3.9-P1.27-LS5.9-BL"
-			(at 72.39 58.42 0)
+		(property "Footprint" "Samacsys:SOT95P230X117-3N"
+			(at 144.78 -45.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 -145.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "TVS Diode Dual Bi-Dir 7/12V 30KV SOT23 Bourns CDSOT23-SM712 Dual Bi-Directional TVS Diode, 400W peak, 3-Pin SOT-23"
+			(at 161.29 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -987,61 +1790,207 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/RS-485-RS-422_Maxim-Integrated_MAX3485AEASA-T_Maxim-Integrated-MAX3485AEASA-T_C94609.html"
-			(at 72.39 60.96 0)
+		(property "Height" "1.17"
+			(at 144.78 -345.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 72.39 45.72 0)
+		(property "Mouser Part Number" "652-CDSOT23-SM712"
+			(at 144.78 -445.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C94609"
-			(at 72.39 63.5 0)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Bourns/CDSOT23-SM712?qs=FuI%252BOVLl4%2FLTY%2FGQ265RLA%3D%3D"
+			(at 144.78 -545.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
 				(hide yes)
 			)
 		)
-		(pin "1"
-			(uuid "8e139ec4-66eb-4640-b874-f30790166e36")
+		(property "Manufacturer_Name" "Bourns"
+			(at 144.78 -645.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "CDSOT23-SM712"
+			(at 144.78 -745.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
 		)
 		(pin "3"
-			(uuid "6cd72be5-e444-4e5e-8b1c-ad888f5809e5")
-		)
-		(pin "8"
-			(uuid "9da8e628-d48d-44e9-bdab-663bd78f1652")
+			(uuid "6e1fcda6-74d8-4144-b1cd-faef44673a13")
 		)
 		(pin "2"
-			(uuid "78fcc13f-26bf-4702-88c8-6ddf34011dc4")
+			(uuid "a8ae2224-4eb8-43e1-9eb3-c75efa66ae64")
 		)
-		(pin "7"
-			(uuid "6a09e5af-fdc2-4ab4-991f-02dcae638c22")
-		)
-		(pin "6"
-			(uuid "4fd57f01-81cd-48c1-b5ee-253a027f0c48")
-		)
-		(pin "5"
-			(uuid "7a8d9686-a5fe-4e40-aa1a-3c1c8027933b")
-		)
-		(pin "4"
-			(uuid "fb3633e6-dde9-4358-9b86-05e4e6da2a9f")
+		(pin "1"
+			(uuid "0fe117d8-ca63-438a-813d-7e0ba4a7c6b2")
 		)
 		(instances
 			(project ""
 				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
-					(reference "U13")
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 58.42 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15cf0146-94e6-46e6-a97c-43938e08acc7")
+		(property "Reference" "R34"
+			(at 60.96 54.6099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 60.96 57.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+			(at 56.642 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 58.42 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5f921bea-9816-4890-b617-1088f0f90ad8")
+		)
+		(pin "1"
+			(uuid "19f8d50a-4d35-4076-932e-8e2cbbca4411")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "R34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 95.25 38.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1c7eb9f4-3005-4a8e-a6c9-6d34919e3b9a")
+		(property "Reference" "C17"
+			(at 95.25 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 95.25 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+			(at 99.06 37.1348 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 95.25 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 95.25 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b2c09eb3-1bf3-486e-bf0e-af131534c406")
+		)
+		(pin "1"
+			(uuid "a27567a4-7646-4fb4-832f-ffb3a99fb9ce")
+		)
+		(instances
+			(project ""
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "C17")
 					(unit 1)
 				)
 			)
@@ -1049,16 +1998,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 86.36 53.34 0)
+		(at 99.06 38.1 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "f722d0ad-e3cf-4071-a60d-73d84095ef1d")
-		(property "Reference" "#PWR050"
-			(at 86.36 59.69 0)
+		(uuid "23fdd9bb-5720-4a5a-8cab-901b4c245c26")
+		(property "Reference" "#PWR065"
+			(at 105.41 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1067,15 +2016,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 86.36 58.42 0)
+			(at 102.87 38.0999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" ""
-			(at 86.36 53.34 0)
+			(at 99.06 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1084,7 +2034,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 86.36 53.34 0)
+			(at 99.06 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1093,7 +2043,671 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 86.36 53.34 0)
+			(at 99.06 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b6d0d5ab-29c7-450c-8839-db15b089187c")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Samacsys:39880-0303")
+		(at 190.5 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4e1b1741-3d72-4884-8cf1-48983d5726d9")
+		(property "Reference" "J13"
+			(at 207.01 46.9899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "39880-0303"
+			(at 207.01 49.5299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Samacsys:398800303"
+			(at 207.01 140.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/398800303"
+			(at 207.01 240.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fixed Terminal Blocks 3 CKT TERM. BLOCK 5.08mm"
+			(at 190.5 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "10.3"
+			(at 207.01 440.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "538-39880-0303"
+			(at 207.01 540.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Molex/39880-0303?qs=nJOu%252Bf4e%252BhtlXsDsBQBzPA%3D%3D"
+			(at 207.01 640.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Molex"
+			(at 207.01 740.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "39880-0303"
+			(at 207.01 840.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "41b0b5af-af1e-4f0b-8950-460c2d82cff9")
+		)
+		(pin "2"
+			(uuid "d0fdefd1-66cf-4a4e-888f-25830acfdd82")
+		)
+		(pin "3"
+			(uuid "b2bdac0d-6375-45cf-a6b5-27e5f2445f86")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "J13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 140.97 46.99 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c111d47-32d4-4b0f-bc36-5d6f9300b6c6")
+		(property "Reference" "#PWR066"
+			(at 134.62 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 137.16 46.9899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 140.97 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 140.97 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d1dc80d-053d-48b8-af63-910112730614")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "#PWR066")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 187.96 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "96271ccd-3960-4689-b00b-7ccede453ee9")
+		(property "Reference" "#PWR067"
+			(at 187.96 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 187.96 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 187.96 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 187.96 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "87820250-fbca-4304-9576-fcab3c440c62")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "#PWR067")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Samacsys:SN65HVD75DGKR")
+		(at 62.23 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "99c679ba-fe89-4141-83d8-9cacab889acc")
+		(property "Reference" "IC2"
+			(at 74.93 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN65HVD75DGKR"
+			(at 74.93 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Samacsys:SOP65P490X110-8N"
+			(at 83.82 138.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn65hvd75.pdf"
+			(at 83.82 238.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "3.3-V half-duplex RS-485 transceiver with IEC ESD, 20 Mbps"
+			(at 62.23 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1.1"
+			(at 83.82 438.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "595-SN65HVD75DGKR"
+			(at 83.82 538.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/SN65HVD75DGKR?qs=E2%2FxqS9xjzrac0D8q%2FrjAA%3D%3D"
+			(at 83.82 638.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Texas Instruments"
+			(at 83.82 738.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "SN65HVD75DGKR"
+			(at 83.82 838.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "4ae9e982-d44e-48f5-80dd-f3a4329d6dbc")
+		)
+		(pin "4"
+			(uuid "fc237f14-3a8e-423b-bca8-5b41b9af4849")
+		)
+		(pin "3"
+			(uuid "6f60def5-9a43-450f-b9e7-38cff14d6356")
+		)
+		(pin "8"
+			(uuid "e8114429-b7b6-44e5-9323-f782f5daf6f6")
+		)
+		(pin "7"
+			(uuid "6ce0d6b7-9b85-46b8-95ae-c1a9e31bc59d")
+		)
+		(pin "5"
+			(uuid "454a63a5-71b2-47a5-b1ba-dc9a2635a839")
+		)
+		(pin "1"
+			(uuid "e0a92ab0-f08b-4ad9-bda5-b1bacff98711")
+		)
+		(pin "2"
+			(uuid "0e1d89da-a9f8-448c-9c49-12b2ace664c2")
+		)
+		(instances
+			(project ""
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "IC2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 53.34 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9c6e141b-2d81-4213-8bca-4757266d0754")
+		(property "Reference" "#PWR061"
+			(at 53.34 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 53.34 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 53.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df0d95a4-5712-4681-9758-ca84cb2ba4ba")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 58.42 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b7e03df9-af3e-4a68-94d8-883153a7a738")
+		(property "Reference" "#PWR062"
+			(at 58.42 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 58.42 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 58.42 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 58.42 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 58.42 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7ac3fe2c-3860-4d5d-9c91-deee40f7ff9c")
+		)
+		(instances
+			(project "rp2350_automation_board"
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "#PWR062")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 53.34 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e0726714-548f-4dfd-ad47-0d56b4384ab1")
+		(property "Reference" "R33"
+			(at 55.88 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 55.88 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
+			(at 51.562 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 53.34 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 53.34 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5b1fff56-52f7-44f9-bfe4-a4c5a6cb3044")
+		)
+		(pin "1"
+			(uuid "48672eb9-77ff-4335-b7e4-af2e5e42881c")
+		)
+		(instances
+			(project ""
+				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
+					(reference "R33")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 91.44 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f722d0ad-e3cf-4071-a60d-73d84095ef1d")
+		(property "Reference" "#PWR064"
+			(at 91.44 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 91.44 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 91.44 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 91.44 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1107,86 +2721,7 @@
 		(instances
 			(project "rp2350_automation_board"
 				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
-					(reference "#PWR050")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EasyEDA:KF301-5.0-2P")
-		(at 153.67 46.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f83dff0d-57c5-405e-94bd-7e4d8a8ab07c")
-		(property "Reference" "U14"
-			(at 157.48 45.7199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "KF301-5.0-2P"
-			(at 157.48 48.2599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "EasyEDA:CONN-TH_P5.00_KF301-5.0-2P"
-			(at 153.67 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://lcsc.com/product-detail/New-Quadratic-Unclassified-Data_Cixi-Kefa-Elec-KF301-5-0-2P_C474881.html"
-			(at 153.67 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 153.67 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C474881"
-			(at 153.67 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5084ecc3-49fb-41ef-aa59-ff4569e9279a")
-		)
-		(pin "1"
-			(uuid "cd89ff77-55b6-433c-957c-95f8491d1cee")
-		)
-		(instances
-			(project ""
-				(path "/5c3e6a7b-be04-44ed-9637-1db33cdda57f/07b134f5-e058-49c5-b5a5-0dcae2fdfdbd"
-					(reference "U14")
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)

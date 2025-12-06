@@ -77,4 +77,33 @@ constexpr auto enum_value(T t){
 uint16_t calculate_crc(const uint8_t* data, size_t length);
 bool check_crc(const modbus_frame_t* frame);
 
+// Request builders (Master -> Slave)
+modbus_frame_t read_coils_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+modbus_frame_t read_discrete_inputs_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+modbus_frame_t read_holding_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+modbus_frame_t read_input_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+modbus_frame_t write_single_coil_request(uint8_t slave_addr, uint16_t coil_addr, bool value);
+modbus_frame_t write_single_register_request(uint8_t slave_addr, uint16_t reg_addr, uint16_t value);
+modbus_frame_t write_multiple_coils_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count, const uint8_t* values);
+modbus_frame_t write_multiple_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count, const uint16_t* values);
+
+// Response builders (Slave -> Master)
+modbus_frame_t read_coils_response(uint8_t slave_addr, uint16_t count, const uint8_t* coil_bytes);
+modbus_frame_t read_discrete_inputs_response(uint8_t slave_addr, uint16_t count, const uint8_t* input_bytes);
+modbus_frame_t read_registers_response(uint8_t slave_addr, uint8_t function_code, uint16_t count, const uint16_t* values);
+modbus_frame_t write_single_coil_response(uint8_t slave_addr, uint16_t coil_addr, bool value);
+modbus_frame_t write_single_register_response(uint8_t slave_addr, uint16_t reg_addr, uint16_t value);
+modbus_frame_t write_multiple_coils_response(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+modbus_frame_t write_multiple_registers_response(uint8_t slave_addr, uint16_t start_addr, uint16_t count);
+
+// Exception response builder
+modbus_frame_t exception_response(uint8_t slave_addr, uint8_t function_code, ModbusExceptionCode exception_code);
+
+// Diagnostic functions (0x08)
+modbus_frame_t read_diagnostics_request(uint8_t slave_addr, uint16_t sub_function, uint16_t data);
+modbus_frame_t read_diagnostics_response(uint8_t slave_addr, uint16_t sub_function, uint16_t data);
+
+// Helper to free frame data
+void free_frame(modbus_frame_t& frame);
+
 #endif //PICO_PLC_MD_COMMON_H

@@ -1,79 +1,103 @@
 ﻿#include <cstdio>
 #include "pico/stdlib.h"
-#include "pico-modbus/common/md_base.h"
+#include "pico-modbus/md_master.h"
+#include "pico-modbus/common/md_common.h"
 
 #define MASTER_UART uart0
-#define MASTER_BAUDRATE 9600
-#define SLAVE_ADDRESS 1
-
-// Simulated holding registers to read from slave
-uint16_t read_register_start = 0;
-uint16_t read_register_count = 10;
+#define MASTER_BAUDRATE 19200
+#define SLAVE_ADDRESS 2
 
 int main() {
     stdio_init_all();
-    sleep_ms(2000); // Wait for USB serial
+    sleep_ms(2000);
     
-    printf("\n=== Modbus Master Test ===\n");
+    printf("\n=== Modbus Master - Diagnostic Registers Test ===\n");
     printf("UART: %s, Baudrate: %d\n", MASTER_UART == uart0 ? "UART0" : "UART1", MASTER_BAUDRATE);
     printf("Pins: TX=GP16, RX=GP17\n\n");
     
-    // Configure UART pins
-    gpio_set_function(16, GPIO_FUNC_UART); // TX
-    gpio_set_function(17, GPIO_FUNC_UART); // RX
+    gpio_set_function(16, GPIO_FUNC_UART);
+    gpio_set_function(17, GPIO_FUNC_UART);
     
-    // Initialize Modbus Master
-    ModbusBase modbus_master(MASTER_UART, MASTER_BAUDRATE);
+    ModbusMaster master(MASTER_UART, MASTER_BAUDRATE);
     
-    printf("Master initialized. Starting to poll slave...\n\n");
-    
-    uint32_t request_count = 0;
+    printf("Reading slave diagnostic registers every 5 seconds...\n\n");
     
     while (true) {
-        // Build Read Holding Registers request (Function 0x03)
-        modbus_frame_t request;
-        request.address = SLAVE_ADDRESS;
-        request.function_code = 0x03; // Read holding registers
+        printf("--- Slave Diagnostics ---\n");
         
-        uint8_t request_data[4];
-        request_data[0] = (read_register_start >> 8) & 0xFF;  // Starting address high
-        request_data[1] = read_register_start & 0xFF;          // Starting address low
-        request_data[2] = (read_register_count >> 8) & 0xFF;   // Quantity high
-        request_data[3] = (read_register_count & 0xFF);          // Quantity low
-        
-        request.data = request_data;
-        request.data_length = 4;
-        
-        // Send request with specific callback
-        uint32_t local_request_count = ++request_count;
-        modbus_master.send_request(request, [local_request_count](const modbus_frame_t& response) {
-            printf("[Master] Response #%lu from slave %d\n", local_request_count, response.address);
-            printf("  Function: 0x%02X\n", response.function_code);
-            
-            if (response.function_code == 0x03 && response.data_length > 0) {
-                uint8_t byte_count = response.data[0];
-                printf("  Register values: ");
-                
-                for (int i = 0; i < byte_count / 2; i++) {
-                    uint16_t value = (response.data[1 + i*2] << 8) | response.data[1 + i*2 + 1];
-                    printf("%d ", value);
+        // Read Bus Message Count (0x000B)
+        master.send_diagnostic_request(SLAVE_ADDRESS, 0x000B, 0x0000,
+            [](const modbus_frame_t& response) {
+                if (response.function_code == 0x08 && response.data_length >= 4) {
+                    uint16_t count = (response.data[2] << 8) | response.data[3];
+                    printf("  Slave Bus Message Count (sent): %u\n", count);
+                } else if (response.function_code & 0x80) {
+                    printf("  ERROR: Exception 0x%02X\n", response.data[0]);
                 }
-                printf("\n");
-            }
-            printf("\n");
-        }, 1000); // 1 second timeout
+            }, 1000);
         
-        printf("[Master] Request #%lu: Read %d registers from address %d\n", 
-               request_count, read_register_count, read_register_start);
+        for (int i = 0; i < 200; i++) {
+            master.process_tx_queue();
+            sleep_ms(1);
+        }
+        sleep_ms(500);
         
-        // Process TX queue and handle any responses
-        for (int i = 0; i < 50; i++) {
-            modbus_master.process_tx_queue();
-            sleep_ms(10);
+        // Read Slave Message Count (0x000E)
+        master.send_diagnostic_request(SLAVE_ADDRESS, 0x000E, 0x0000,
+            [](const modbus_frame_t& response) {
+                if (response.function_code == 0x08 && response.data_length >= 4) {
+                    uint16_t count = (response.data[2] << 8) | response.data[3];
+                    printf("  Slave Message Count (received): %u\n", count);
+                } else if (response.function_code & 0x80) {
+                    printf("  ERROR: Exception 0x%02X\n", response.data[0]);
+                }
+            }, 1000);
+        
+        for (int i = 0; i < 200; i++) {
+            master.process_tx_queue();
+            sleep_ms(1);
+        }
+        sleep_ms(500);
+        
+        // Read Bus Communication Error Count (0x000C)
+        master.send_diagnostic_request(SLAVE_ADDRESS, 0x000C, 0x0000,
+            [](const modbus_frame_t& response) {
+                if (response.function_code == 0x08 && response.data_length >= 4) {
+                    uint16_t count = (response.data[2] << 8) | response.data[3];
+                    printf("  Slave Communication Errors (CRC): %u\n", count);
+                } else if (response.function_code & 0x80) {
+                    printf("  ERROR: Exception 0x%02X\n", response.data[0]);
+                }
+            }, 1000);
+        
+        for (int i = 0; i < 200; i++) {
+            master.process_tx_queue();
+            sleep_ms(1);
+        }
+        sleep_ms(500);
+        
+        // Read Slave Exception Error Count (0x000D)
+        master.send_diagnostic_request(SLAVE_ADDRESS, 0x000D, 0x0000,
+            [](const modbus_frame_t& response) {
+                if (response.function_code == 0x08 && response.data_length >= 4) {
+                    uint16_t count = (response.data[2] << 8) | response.data[3];
+                    printf("  Slave Exception Errors: %u\n", count);
+                } else if (response.function_code & 0x80) {
+                    printf("  ERROR: Exception 0x%02X\n", response.data[0]);
+                }
+            }, 1000);
+        
+        for (int i = 0; i < 200; i++) {
+            master.process_tx_queue();
+            sleep_ms(1);
         }
         
-        // Wait before next poll
-        sleep_ms(1000);
+        printf("\n--- Master Local Diagnostics ---\n");
+        printf("  Master Bus Messages (sent): %u\n", master.get_bus_message_count());
+        printf("  Master Timeouts: %u\n", master.get_slave_no_response_count());
+        printf("  Master Communication Errors (CRC): %u\n\n", master.get_bus_communication_error_count());
+        
+        sleep_ms(5000);
     }
     
     return 0;

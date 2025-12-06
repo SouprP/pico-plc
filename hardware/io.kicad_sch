@@ -2321,7 +2321,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 118.11) (xy 240.03 118.11)
+			(xy 233.68 146.05) (xy 240.03 146.05)
 		)
 		(stroke
 			(width 0)
@@ -2441,7 +2441,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 125.73) (xy 240.03 125.73)
+			(xy 233.68 153.67) (xy 240.03 153.67)
 		)
 		(stroke
 			(width 0)
@@ -2581,7 +2581,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 130.81) (xy 240.03 130.81)
+			(xy 233.68 158.75) (xy 240.03 158.75)
 		)
 		(stroke
 			(width 0)
@@ -2741,7 +2741,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 128.27) (xy 240.03 128.27)
+			(xy 233.68 156.21) (xy 240.03 156.21)
 		)
 		(stroke
 			(width 0)
@@ -3031,7 +3031,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 115.57) (xy 240.03 115.57)
+			(xy 233.68 143.51) (xy 240.03 143.51)
 		)
 		(stroke
 			(width 0)
@@ -3091,7 +3091,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 113.03) (xy 240.03 113.03)
+			(xy 233.68 140.97) (xy 240.03 140.97)
 		)
 		(stroke
 			(width 0)
@@ -3200,7 +3200,7 @@
 		(uuid "fa9fc9cd-d863-4782-932f-00c74970de22")
 	)
 	(label "DO_2"
-		(at 233.68 115.57 0)
+		(at 233.68 143.51 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3210,7 +3210,7 @@
 		(uuid "09304742-3a75-4d2c-ace4-4e5b52276858")
 	)
 	(label "DI_2"
-		(at 233.68 128.27 0)
+		(at 233.68 156.21 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3220,7 +3220,7 @@
 		(uuid "492e6f74-8788-4934-bd67-6a12bf7ad66b")
 	)
 	(label "DI_1"
-		(at 233.68 125.73 0)
+		(at 233.68 153.67 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3290,7 +3290,7 @@
 		(uuid "bf2e46e1-8331-4a9b-bb38-34d3d36c41c6")
 	)
 	(label "DI_3"
-		(at 233.68 130.81 0)
+		(at 233.68 158.75 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3300,7 +3300,7 @@
 		(uuid "c6d8c106-645b-42e5-b45c-20372cd3ff1a")
 	)
 	(label "DO_3"
-		(at 233.68 118.11 0)
+		(at 233.68 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3310,7 +3310,7 @@
 		(uuid "c7af5973-13ed-4f1f-a2a3-63183db2dddb")
 	)
 	(label "DO_1"
-		(at 233.68 113.03 0)
+		(at 233.68 140.97 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4840,7 +4840,7 @@
 	)
 	(symbol
 		(lib_id "Samacsys:TB006-508-03BE")
-		(at 240.03 125.73 0)
+		(at 240.03 153.67 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4849,7 +4849,7 @@
 		(fields_autoplaced yes)
 		(uuid "4fbcff6c-5336-4fca-b700-18a62b3b247b")
 		(property "Reference" "J14"
-			(at 256.54 126.9999 0)
+			(at 256.54 154.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4858,7 +4858,7 @@
 			)
 		)
 		(property "Value" "TB006-508-03BE"
-			(at 256.54 129.5399 0)
+			(at 256.54 157.4799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4867,7 +4867,7 @@
 			)
 		)
 		(property "Footprint" "Samacsys:TB00650803BE"
-			(at 256.54 220.65 0)
+			(at 256.54 248.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4877,7 +4877,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.sameskydevices.com/product/resource/supplyframepdf/tb006-508.pdf"
-			(at 256.54 320.65 0)
+			(at 256.54 348.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4887,7 +4887,7 @@
 			)
 		)
 		(property "Description" "2~24 Poles, Screw Type, Horizontal, 5.08 Pitch, 26~14 (AWG), Terminal Block Connector"
-			(at 240.03 125.73 0)
+			(at 240.03 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4896,7 +4896,7 @@
 			)
 		)
 		(property "Height" "10.4"
-			(at 256.54 520.65 0)
+			(at 256.54 548.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4906,7 +4906,7 @@
 			)
 		)
 		(property "Mouser Part Number" "490-TB006-508-03BE"
-			(at 256.54 620.65 0)
+			(at 256.54 648.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4916,7 +4916,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Same-Sky/TB006-508-03BE?qs=vLWxofP3U2zmvvLYJBQLMA%3D%3D"
-			(at 256.54 720.65 0)
+			(at 256.54 748.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4926,7 +4926,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Same Sky"
-			(at 256.54 820.65 0)
+			(at 256.54 848.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4936,7 +4936,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "TB006-508-03BE"
-			(at 256.54 920.65 0)
+			(at 256.54 948.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7141,7 +7141,7 @@
 	)
 	(symbol
 		(lib_id "Samacsys:TB006-508-03BE")
-		(at 240.03 113.03 0)
+		(at 240.03 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7150,7 +7150,7 @@
 		(fields_autoplaced yes)
 		(uuid "c2f8340a-cbcd-4380-82f9-f2fb9fa0f9a9")
 		(property "Reference" "J7"
-			(at 256.54 114.2999 0)
+			(at 256.54 142.2399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7159,7 +7159,7 @@
 			)
 		)
 		(property "Value" "TB006-508-03BE"
-			(at 256.54 116.8399 0)
+			(at 256.54 144.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7168,7 +7168,7 @@
 			)
 		)
 		(property "Footprint" "Samacsys:TB00650803BE"
-			(at 256.54 207.95 0)
+			(at 256.54 235.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7178,7 +7178,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.sameskydevices.com/product/resource/supplyframepdf/tb006-508.pdf"
-			(at 256.54 307.95 0)
+			(at 256.54 335.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7188,7 +7188,7 @@
 			)
 		)
 		(property "Description" "2~24 Poles, Screw Type, Horizontal, 5.08 Pitch, 26~14 (AWG), Terminal Block Connector"
-			(at 240.03 113.03 0)
+			(at 240.03 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7197,7 +7197,7 @@
 			)
 		)
 		(property "Height" "10.4"
-			(at 256.54 507.95 0)
+			(at 256.54 535.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7207,7 +7207,7 @@
 			)
 		)
 		(property "Mouser Part Number" "490-TB006-508-03BE"
-			(at 256.54 607.95 0)
+			(at 256.54 635.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7217,7 +7217,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Same-Sky/TB006-508-03BE?qs=vLWxofP3U2zmvvLYJBQLMA%3D%3D"
-			(at 256.54 707.95 0)
+			(at 256.54 735.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7227,7 +7227,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Same Sky"
-			(at 256.54 807.95 0)
+			(at 256.54 835.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7237,7 +7237,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "TB006-508-03BE"
-			(at 256.54 907.95 0)
+			(at 256.54 935.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)

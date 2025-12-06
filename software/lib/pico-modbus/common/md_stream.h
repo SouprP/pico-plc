@@ -14,7 +14,7 @@ private:
     uart_inst_t* uart;
     uint baudrate;
     
-    // Timing parameters (in microseconds)
+    // timing parameters (in microseconds)
     uint32_t t1_5_us;  // 1.5 character times
     uint32_t t3_5_us;  // 3.5 character times (frame boundary)
     
@@ -24,12 +24,13 @@ private:
     volatile bool frame_ready;
     volatile uint64_t last_rx_time_us; // Time of last received byte
     
-    // Frame received callback
+    // callbacks for frame and error handling
     std::function<void(const modbus_frame_t&)> frame_callback;
+    std::function<void(const modbus_frame_t&)> error_callback;
     
     // IRQ handler (must be static for C callback)
     static void uart_irq_handler();
-    static ModbusStream* instance; // For accessing from static IRQ handler
+    static ModbusStream* instance;
     
     void handle_uart_rx();
     void reset_rx_buffer();
@@ -40,12 +41,12 @@ public:
     ~ModbusStream();
 
     void write(const modbus_frame_t* frame);
-    
-    // Check if frame is ready and process it (call from main loop!)
+
     void process_if_ready();
-    
-    // Set callback for received frames
+
+    // callbacks for received frames
     void on_frame_received(const std::function<void(const modbus_frame_t&)>& callback);
+    void on_error_received(const std::function<void(const modbus_frame_t&)>& callback);
     
     uint32_t get_t1_5_us() const { return t1_5_us; }
     uint32_t get_t3_5_us() const { return t3_5_us; }

@@ -4,7 +4,8 @@ if(NOT TARGET pico_modbus)
 #    include($ENV{PICO_SDK_PATH}/pico_sdk_init.cmake)
 #    message($ENV{PICO_SDK_PATH})
     set(SRC_FILES
-            master/master.cpp
+            md_master.cpp
+            md_slave.cpp
             common/md_common.cpp
             common/md_base.cpp
             common/md_stream.cpp
@@ -12,7 +13,8 @@ if(NOT TARGET pico_modbus)
     )
 
     set(INC_FILES
-            master/master.h
+            md_master.h
+            md_slave.h
             common/md_common.h
             common/md_base.h
             common/md_stream.h

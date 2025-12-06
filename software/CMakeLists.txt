@@ -20,6 +20,10 @@ add_executable(pico_plc src/main.cpp src/defines.h)
 add_executable(master_plc src/master.cpp src/defines.h)
 add_executable(slave_plc src/slave.cpp src/defines.h)
 
+#add_executable(pico_plc src/main.cpp src/defines.h)
+#add_executable(master_plc src/tests/relay_master.cpp src/defines.h)
+#add_executable(slave_plc src/tests/relay_slave.cpp src/defines.h)
+
 # Add all custom libraries
 add_subdirectory(lib)
 
@@ -53,7 +57,7 @@ pico_add_extra_outputs(slave_plc)
 pico_add_extra_outputs(pico_plc)
 
 # pico-tool auto-flash command
-set(DEBUG_BUILD 1)
+set(DEBUG_BUILD 0)
 set(ALL_BUILD 0)
 set(SLAVE_BUILD 1)
 set(MASTER_BUILD 1)
@@ -94,9 +98,9 @@ if (NOT DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
     )
 endif ()
 
-# Test .uf2 file
-if (DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
-    add_custom_command(TARGET slave_plc POST_BUILD
-            COMMAND picotool load -f --ser ${SLAVE_ID} -x pico_plc.uf2
-    )
-endif ()
+## Test .uf2 file
+#if (DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
+#    add_custom_command(TARGET slave_plc POST_BUILD
+#            COMMAND picotool load -f --ser ${SLAVE_ID} -x pico_plc.uf2
+#    )
+#endif ()

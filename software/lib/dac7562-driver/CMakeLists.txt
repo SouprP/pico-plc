@@ -1,14 +1,12 @@
-if(NOT TARGET pico_utils)
+if(NOT TARGET dac7562-driver)
     set(SRC_FILES
-            common_utils.cpp
-            custom_dac.cpp
-            
+            dac7562.cpp
+
 
     )
 
     set(INC_FILES
-            common_utils.h
-            custom_dac.h
+            dac7562.h
     )
 
     add_library(pico_utils ${SRC_FILES} ${INC_FILES})
@@ -16,11 +14,9 @@ if(NOT TARGET pico_utils)
     target_link_libraries(pico_utils PUBLIC
             pico_stdlib
             pico_rand
-            pico_multicore
-            hardware_i2c
+            hardware_spi
             pico_cyw43_arch_none
 
-            hardware_pwm
     )
 
     target_include_directories(pico_utils PUBLIC

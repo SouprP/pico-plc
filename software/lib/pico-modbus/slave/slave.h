@@ -1,4 +1,0 @@
-#ifndef PICO_PLC_SLAVE_H
-#define PICO_PLC_SLAVE_H
-
-#endif //PICO_PLC_SLAVE_H

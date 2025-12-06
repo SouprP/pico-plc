@@ -1265,6 +1265,16 @@
 	)
 	(wire
 		(pts
+			(xy 92.71 38.1) (xy 91.44 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ca7e0b3-01fb-431b-bbdc-08810fe30fdf")
+	)
+	(wire
+		(pts
 			(xy 91.44 38.1) (xy 91.44 43.18)
 		)
 		(stroke
@@ -1930,7 +1940,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 95.25 38.1 90)
+		(at 96.52 38.1 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1939,7 +1949,7 @@
 		(fields_autoplaced yes)
 		(uuid "1c7eb9f4-3005-4a8e-a6c9-6d34919e3b9a")
 		(property "Reference" "C17"
-			(at 95.25 30.48 90)
+			(at 96.52 30.48 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1947,7 +1957,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 95.25 33.02 90)
+			(at 96.52 33.02 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1955,7 +1965,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
-			(at 99.06 37.1348 0)
+			(at 100.33 37.1348 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1964,7 +1974,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 95.25 38.1 0)
+			(at 96.52 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1973,7 +1983,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 95.25 38.1 0)
+			(at 96.52 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1998,7 +2008,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 99.06 38.1 90)
+		(at 100.33 38.1 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2007,7 +2017,7 @@
 		(fields_autoplaced yes)
 		(uuid "23fdd9bb-5720-4a5a-8cab-901b4c245c26")
 		(property "Reference" "#PWR065"
-			(at 105.41 38.1 0)
+			(at 106.68 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2016,7 +2026,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 102.87 38.0999 90)
+			(at 104.14 38.0999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2025,7 +2035,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 38.1 0)
+			(at 100.33 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2034,7 +2044,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 38.1 0)
+			(at 100.33 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2043,7 +2053,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 99.06 38.1 0)
+			(at 100.33 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)

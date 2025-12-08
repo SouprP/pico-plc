@@ -20,6 +20,11 @@ add_executable(pico_plc src/main.cpp src/defines.h)
 add_executable(master_plc src/master.cpp src/defines.h)
 add_executable(slave_plc src/slave.cpp src/defines.h)
 
+# Enable Modbus debug messages for master and slave (comment out for production)
+# Uncomment lines below to enable debug output
+# target_compile_definitions(master_plc PRIVATE MODBUS_DEBUG)
+# target_compile_definitions(slave_plc PRIVATE MODBUS_DEBUG)
+
 #add_executable(pico_plc src/main.cpp src/defines.h)
 #add_executable(master_plc src/tests/relay_master.cpp src/defines.h)
 #add_executable(slave_plc src/tests/relay_slave.cpp src/defines.h)

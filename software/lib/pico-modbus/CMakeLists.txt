@@ -21,6 +21,10 @@ if(NOT TARGET pico_modbus)
     )
 
     add_library(pico_modbus ${SRC_FILES} ${INC_FILES})
+    
+    # Enable debug messages if MODBUS_DEBUG is defined in parent CMakeLists.txt
+    # Comment out for production to improve performance
+    # target_compile_definitions(pico_modbus PUBLIC MODBUS_DEBUG)
 
     target_link_libraries(pico_modbus PUBLIC
             pico_stdlib

@@ -4,6 +4,16 @@
 #include "pico/stdlib.h"
 #include <type_traits>
 
+// Uncomment the line below to enable debug messages globally
+// #define MODBUS_DEBUG
+
+// Debug macros - enable with #define MODBUS_DEBUG before including headers
+#ifdef MODBUS_DEBUG
+    #define MODBUS_DEBUG_PRINT(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#else
+    #define MODBUS_DEBUG_PRINT(fmt, ...) ((void)0)
+#endif
+
 typedef struct {
     uint8_t address;
     uint8_t function_code;

@@ -4,9 +4,10 @@
 #include <cstring>
 #include <cstdio>
 
-ModbusSlave::ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate)
-    : ModbusBase(uart, baudrate),
+ModbusSlave::ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin, int re_pin)
+    : ModbusBase(uart, baudrate, de_pin, re_pin),
       device_address(address),
+      is_broadcast_request(false),
       holding_registers_enabled(false),
       input_registers_enabled(false),
       coils_enabled(false),
@@ -29,7 +30,7 @@ void ModbusSlave::handle_received_frame(const modbus_frame_t& frame) {
         return;  // Not for us
     }
     
-    bool is_broadcast = (frame.address == 0);
+    is_broadcast_request = (frame.address == 0);
     uint8_t func = frame.function_code;
     
     // Parse common request fields
@@ -80,7 +81,7 @@ void ModbusSlave::handle_received_frame(const modbus_frame_t& frame) {
             
         default:
             // Unsupported function code
-            if (!is_broadcast) {
+            if (!is_broadcast_request) {
                 send_exception(func, ModbusExceptionCode::ILLEGAL_FUNCTION);
             } else {
                 // Broadcast - no response, but count as no-response
@@ -98,7 +99,7 @@ void ModbusSlave::handle_received_frame(const modbus_frame_t& frame) {
 
 void ModbusSlave::send_reply(const modbus_frame_t& frame) {
     // Don't send replies to broadcast messages (address 0)
-    if (frame.address == 0) {
+    if (is_broadcast_request) {
         diagnostic_counters.SLAVE_NO_RESPONSE_COUNT++;
         return;
     }
@@ -453,7 +454,7 @@ void ModbusSlave::handle_write_single_register(const modbus_frame_t& frame, uint
     free_frame(response);
 }
 
-void ModbusSlave::handle_read_coils(const modbus_frame_t& frame, uint16_t start_addr, uint16_t count) {
+void ModbusSlave::handle_write_multiple_coils(const modbus_frame_t& frame, uint16_t start_addr, uint16_t count) {
     if (!is_coils_enabled()) {
         send_exception(frame.function_code, ModbusExceptionCode::ILLEGAL_FUNCTION);
         return;
@@ -543,7 +544,7 @@ void ModbusSlave::handle_read_diagnostics(const modbus_frame_t& frame) {
             
         case enum_value(ModbusDiagnosticCode::BUS_MESSAGE_COUNT):
             response_data = get_bus_message_count();
-            printf("[DIAG READ] BUS_MESSAGE_COUNT = %u (direct: %u)\n", response_data, diagnostic_counters.BUS_MESSAGE_COUNT);
+            MODBUS_DEBUG_PRINT("[DIAG READ] BUS_MESSAGE_COUNT = %u (direct: %u)\n", response_data, diagnostic_counters.BUS_MESSAGE_COUNT);
             break;
             
         case enum_value(ModbusDiagnosticCode::BUS_COMMUNICATION_ERROR_COUNT):
@@ -582,7 +583,7 @@ void ModbusSlave::handle_read_diagnostics(const modbus_frame_t& frame) {
     }
     
     modbus_frame_t response = read_diagnostics_response(get_address(), sub_function, response_data);
-    printf("[DIAG RESPONSE] Sending: sub_func=0x%04X, data=0x%04X (%u)\n", sub_function, response_data, response_data);
+    MODBUS_DEBUG_PRINT("[DIAG RESPONSE] Sending: sub_func=0x%04X, data=0x%04X (%u)\n", sub_function, response_data, response_data);
     send_reply(response);
     free_frame(response);
 }

@@ -1,4 +1,5 @@
 #include "md_stream.h"
+#include "md_common.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -8,10 +9,31 @@
 // Static member initialization
 ModbusStream* ModbusStream::instance = nullptr;
 
-ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate) 
-    : uart(uart), baudrate(baudrate), rx_index(0), frame_ready(false), last_rx_time_us(0) {
+ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin) 
+    : uart(uart), baudrate(baudrate), de_pin(de_pin), re_pin(re_pin),
+      rx_index(0), frame_ready(false), last_rx_time_us(0), tx_in_progress(false) {
 
     instance = this;
+    
+    // Initialize RS485 transceiver control pins (SN65HVD75DGKR)
+    if (de_pin >= 0) {
+        gpio_init(de_pin);
+        gpio_set_dir(de_pin, GPIO_OUT);
+        gpio_put(de_pin, 0); // DE=0: Driver disabled (receive mode)
+        MODBUS_DEBUG_PRINT("[RS485] DE pin %d initialized (Driver Disable)\n", de_pin);
+    }
+    
+    if (re_pin >= 0) {
+        gpio_init(re_pin);
+        gpio_set_dir(re_pin, GPIO_OUT);
+        gpio_put(re_pin, 0); // RE=0: Receiver enabled
+        MODBUS_DEBUG_PRINT("[RS485] RE pin %d initialized (Receiver Enable)\n", re_pin);
+    }
+    
+    // If both pins configured, confirm RX mode
+    if (de_pin >= 0 && re_pin >= 0) {
+        MODBUS_DEBUG_PRINT("[RS485] SN65HVD75DGKR in receive mode (DE=0, RE=0)\n");
+    }
     
     // calculation of character time in microseconds
     // Modbus RTU character: 1 start bit + 8 data bits + parity + 1 stop bit = 11 bits
@@ -28,11 +50,18 @@ ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate)
 
     uart_init(uart, baudrate);
     uart_set_format(uart, 8, 1, UART_PARITY_EVEN);
-    uart_set_fifo_enabled(uart, true);
+    
+    // Disable FIFO to ensure immediate interrupts for strict Modbus timing
+    // This prevents "perceived gaps" caused by FIFO timeout delays
+    uart_set_fifo_enabled(uart, false);
     
     // RX interrupt for UART
     int uart_irq = (uart == uart0) ? UART0_IRQ : UART1_IRQ;
     irq_set_exclusive_handler(uart_irq, uart_irq_handler);
+    
+    // Set UART IRQ to highest priority to prevent USB/other IRQs from blocking it
+    irq_set_priority(uart_irq, 0x00);  // 0 = highest priority
+    
     irq_set_enabled(uart_irq, true);
     uart_set_irq_enables(uart, true, false);
     
@@ -59,11 +88,20 @@ void ModbusStream::uart_irq_handler() {
 }
 
 void ModbusStream::handle_uart_rx() {
+    // Ignore RX during TX to prevent echo
+    if (tx_in_progress) {
+        // Flush echo bytes
+        while (uart_is_readable(uart)) {
+            uart_getc(uart);
+        }
+        return;
+    }
+    
     // read all available bytes from FIFO
     while (uart_is_readable(uart) && rx_index < MODBUS_MAX_FRAME_SIZE) {
         uint8_t byte = uart_getc(uart);
         rx_buffer[rx_index++] = byte;
-        printf("[IRQ] RX byte: 0x%02X (total=%d)\n", byte, rx_index);
+        // NOTE: No printf in IRQ handler - it blocks subsequent byte reception!
         
         // update timestamp
         last_rx_time_us = time_us_64();
@@ -81,7 +119,7 @@ void ModbusStream::process_if_ready() {
         uint64_t elapsed = time_us_64() - last_rx_time_us;
         
         if (elapsed >= t3_5_us) {
-            printf("[T3.5] Silence detected, processing frame\n");
+            MODBUS_DEBUG_PRINT("[T3.5] Silence detected, processing frame\n");
             // T3.5 silence detected - process frame
             process_received_frame();
         }
@@ -96,12 +134,12 @@ void ModbusStream::reset_rx_buffer() {
 }
 
 void ModbusStream::process_received_frame() {
-    printf("[FRAME] Processing %d bytes\n", rx_index);
+    MODBUS_DEBUG_PRINT("[FRAME] Processing %d bytes\n", rx_index);
     
     // minimum frame: address + function + CRC (2 bytes) = 4 bytes
     // Per spec: frames < 3 bytes also count as communication errors
     if (rx_index < 4) {
-        printf("[FRAME] Too short, discarding\n");
+        MODBUS_DEBUG_PRINT("[FRAME] Too short, discarding\n");
         if (error_callback) {
             // Create dummy frame for error reporting
             modbus_frame_t error_frame = {0};
@@ -121,7 +159,7 @@ void ModbusStream::process_received_frame() {
         }
     }
     if (all_zeros) {
-        printf("[FRAME] All zeros (floating line noise), discarding\n");
+        MODBUS_DEBUG_PRINT("[FRAME] All zeros (floating line noise), discarding\n");
         reset_rx_buffer();
         return;
     }
@@ -143,7 +181,7 @@ void ModbusStream::process_received_frame() {
     frame.crc = rx_buffer[rx_index - 2] | (rx_buffer[rx_index - 1] << 8);
 
     bool crc_valid = check_crc(&frame);
-    printf("[FRAME] Addr=%d Func=0x%02X CRC=%s\n", 
+    MODBUS_DEBUG_PRINT("[FRAME] Addr=%d Func=0x%02X CRC=%s\n", 
            frame.address, frame.function_code, crc_valid ? "OK" : "FAIL");
 
     reset_rx_buffer();
@@ -171,8 +209,24 @@ void ModbusStream::on_error_received(const std::function<void(const modbus_frame
 }
 
 void ModbusStream::write(const modbus_frame_t* frame) {
-    led_gpio_set(1);
-    printf("[TX] Sending frame: Addr=%d Func=0x%02X DataLen=%d\n",
+    // led_gpio_set(1);
+    
+    // Disable RX IRQ immediately to prevent echo during TX
+    uart_set_irq_enables(uart, false, false);
+    
+    // Set flag to ignore RX during TX
+    tx_in_progress = true;
+    
+    // Reset RX buffer to discard any partial data
+    rx_index = 0;
+    // DO NOT clear last_rx_time_us - let IRQ handler update it when response arrives
+    
+    // Flush UART FIFO
+    while (uart_is_readable(uart)) {
+        uart_getc(uart);
+    }
+    
+    MODBUS_DEBUG_PRINT("[TX] Sending frame: Addr=%d Func=0x%02X DataLen=%d\n",
            frame->address, frame->function_code, frame->data_length);
     
     // wait for T3.5 silence before transmitting (bus idle)
@@ -193,15 +247,10 @@ void ModbusStream::write(const modbus_frame_t* frame) {
     tx_buffer[tx_length++] = crc & 0xFF;        // CRC low byte
     tx_buffer[tx_length++] = (crc >> 8) & 0xFF; // CRC high byte
     
-    printf("[TX] Total %d bytes, CRC=0x%04X\n", tx_length, crc);
+    MODBUS_DEBUG_PRINT("[TX] Total %d bytes, CRC=0x%04X\n", tx_length, crc);
     
-    // Disable RX IRQ to prevent receiving our own transmission (RS485 echo)
-    uart_set_irq_enables(uart, false, false);
-    
-    // Flush any bytes that arrived during preparation
-    while (uart_is_readable(uart)) {
-        uart_getc(uart);
-    }
+    // Switch RS485 transceiver to TX mode (SN65HVD75DGKR: DE=1, RE=1)
+    set_transceiver_mode_tx();
     
     // transmit frame
     uart_write_blocking(uart, tx_buffer, tx_length);
@@ -209,15 +258,39 @@ void ModbusStream::write(const modbus_frame_t* frame) {
     // Wait for transmission to complete
     uart_tx_wait_blocking(uart);
     
-    // Flush any echo bytes
-    sleep_us(t3_5_us);
-    while (uart_is_readable(uart)) {
-        uart_getc(uart);
-    }
+    // Switch RS485 transceiver back to RX mode (SN65HVD75DGKR: DE=0, RE=0)
+    set_transceiver_mode_rx();
+    
+    // Clear the TX flag BEFORE re-enabling IRQ
+    tx_in_progress = false;
     
     // Re-enable RX IRQ
     uart_set_irq_enables(uart, true, false);
     
-    printf("[TX] Frame sent\n");
-    led_gpio_set(0);
+    MODBUS_DEBUG_PRINT("[TX] Frame sent\n");
+    // led_gpio_set(0);
+}
+
+void ModbusStream::set_transceiver_mode_tx() {
+    // SN65HVD75DGKR: DE=1 (Driver Enable), RE=1 (Receiver Disable)
+    if (de_pin >= 0) {
+        gpio_put(de_pin, 1);
+    }
+    if (re_pin >= 0) {
+        gpio_put(re_pin, 1);
+    }
+    // Small delay for transceiver to switch modes (typically ~100ns, but we add margin)
+    sleep_us(1);
+}
+
+void ModbusStream::set_transceiver_mode_rx() {
+    // SN65HVD75DGKR: DE=0 (Driver Disable), RE=0 (Receiver Enable)
+    if (de_pin >= 0) {
+        gpio_put(de_pin, 0);
+    }
+    if (re_pin >= 0) {
+        gpio_put(re_pin, 0);
+    }
+    // Small delay for transceiver to switch modes
+    sleep_us(1);
 }

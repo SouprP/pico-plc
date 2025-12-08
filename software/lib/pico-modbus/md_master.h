@@ -16,7 +16,7 @@ protected:
     void handle_received_frame(const modbus_frame_t& frame) override;
     
 public:
-    ModbusMaster(uart_inst_t* uart, uint baudrate);  // Master has no address
+    ModbusMaster(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);  // Master has no address
     ~ModbusMaster();
     
     // Send request with callback for response
@@ -29,8 +29,62 @@ public:
                                  const std::function<void(const modbus_frame_t&)>& callback,
                                  uint32_t timeout_ms = 5000);
     
+    // Convenience methods for reading registers
+    void send_read_holding_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count,
+                                             const std::function<void(const modbus_frame_t&)>& callback,
+                                             uint32_t timeout_ms = 5000);
+    
+    void send_read_input_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count,
+                                           const std::function<void(const modbus_frame_t&)>& callback,
+                                           uint32_t timeout_ms = 5000);
+    
+    // Convenience methods for writing
+    void send_write_single_register_request(uint8_t slave_addr, uint16_t reg_addr, uint16_t value,
+                                            const std::function<void(const modbus_frame_t&)>& callback,
+                                            uint32_t timeout_ms = 5000);
+    
+    void send_write_single_coil_request(uint8_t slave_addr, uint16_t coil_addr, bool value,
+                                        const std::function<void(const modbus_frame_t&)>& callback,
+                                        uint32_t timeout_ms = 5000);
+    
+    void send_read_coils_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count,
+                                 const std::function<void(const modbus_frame_t&)>& callback,
+                                 uint32_t timeout_ms = 5000);
+
+    void send_read_discrete_inputs_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count,
+                                           const std::function<void(const modbus_frame_t&)>& callback,
+                                           uint32_t timeout_ms = 5000);
+    
+    // Convenience methods for reading SINGLE items (wrappers around standard read with count=1)
+    void send_read_single_coil_request(uint8_t slave_addr, uint16_t coil_addr,
+                                       const std::function<void(const modbus_frame_t&)>& callback,
+                                       uint32_t timeout_ms = 5000);
+
+    void send_read_single_discrete_input_request(uint8_t slave_addr, uint16_t input_addr,
+                                                 const std::function<void(const modbus_frame_t&)>& callback,
+                                                 uint32_t timeout_ms = 5000);
+
+    void send_read_single_holding_register_request(uint8_t slave_addr, uint16_t reg_addr,
+                                                   const std::function<void(const modbus_frame_t&)>& callback,
+                                                   uint32_t timeout_ms = 5000);
+
+    void send_read_single_input_register_request(uint8_t slave_addr, uint16_t reg_addr,
+                                                 const std::function<void(const modbus_frame_t&)>& callback,
+                                                 uint32_t timeout_ms = 5000);
+
+    void send_write_multiple_coils_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count, const uint8_t* values,
+                                           const std::function<void(const modbus_frame_t&)>& callback,
+                                           uint32_t timeout_ms = 5000);
+
+    void send_write_multiple_registers_request(uint8_t slave_addr, uint16_t start_addr, uint16_t count, const uint16_t* values,
+                                               const std::function<void(const modbus_frame_t&)>& callback,
+                                               uint32_t timeout_ms = 5000);
+    
     // Override process_tx_queue to add request/response sequencing
     void process_tx_queue();
+    
+    // Check if there is a pending request waiting for response
+    bool is_request_pending();
 };
 
 

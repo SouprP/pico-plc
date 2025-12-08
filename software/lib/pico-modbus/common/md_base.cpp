@@ -1,13 +1,14 @@
 #include "md_base.h"
+#include "md_common.h"
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
 
-ModbusBase::ModbusBase(uart_inst_t* uart, uint baudrate) {
+ModbusBase::ModbusBase(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin) {
     mutex_init(&tx_queue_mutex);
 
-    // UART handler class
-    stream = std::make_unique<ModbusStream>(uart, baudrate);
+    // UART handler class with RS485 transceiver control
+    stream = std::make_unique<ModbusStream>(uart, baudrate, de_pin, re_pin);
     
     // callback for received frames (called from IRQ!)
     stream->on_frame_received([this](const modbus_frame_t& frame) {
@@ -53,7 +54,7 @@ void ModbusBase::process_tx_queue() {
         // Send the frame
         stream->write(&frame);
         diagnostic_counters.BUS_MESSAGE_COUNT++;
-        printf("[DIAG] BUS_MESSAGE_COUNT incremented to %u\n", diagnostic_counters.BUS_MESSAGE_COUNT);
+        MODBUS_DEBUG_PRINT("[DIAG] BUS_MESSAGE_COUNT incremented to %u\n", diagnostic_counters.BUS_MESSAGE_COUNT);
 
         if (frame.data) {
             free(frame.data);

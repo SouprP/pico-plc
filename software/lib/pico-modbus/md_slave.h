@@ -8,6 +8,7 @@
 class ModbusSlave : public ModbusBase {
 private:
     uint8_t device_address;
+    bool is_broadcast_request; // Flag to track if current request is broadcast
     
     // Register type enable flags
     bool coils_enabled;
@@ -50,7 +51,7 @@ protected:
     void handle_received_frame(const modbus_frame_t& frame) override;
     
 public:
-    ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate);
+    ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);
     
     // Enable register types
     void enable_holding_registers(uint16_t size);

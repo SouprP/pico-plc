@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include <cstdio>
 
-ModbusMaster::ModbusMaster(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin)
-    : ModbusBase(uart, baudrate, de_pin, re_pin), pending_request(nullptr), request_sent(false) {
+ModbusMaster::ModbusMaster(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin, ModbusParity parity)
+    : ModbusBase(uart, baudrate, de_pin, re_pin, parity), pending_request(nullptr), request_sent(false) {
     // Master has no address in Modbus RTU
     mutex_init(&request_mutex);
 }

@@ -71,7 +71,7 @@ protected:
     virtual void handle_received_frame(const modbus_frame_t& frame) = 0;
 
 public:
-    ModbusBase(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);
+    ModbusBase(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1, ModbusParity parity = ModbusParity::EVEN);
     virtual ~ModbusBase();
     
     // Queue a frame to send (non-blocking, thread-safe)

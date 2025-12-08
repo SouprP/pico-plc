@@ -51,7 +51,7 @@ protected:
     void handle_received_frame(const modbus_frame_t& frame) override;
     
 public:
-    ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);
+    ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1, ModbusParity parity = ModbusParity::EVEN);
     
     // Enable register types
     void enable_holding_registers(uint16_t size);

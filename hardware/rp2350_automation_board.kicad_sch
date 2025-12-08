@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "5c3e6a7b-be04-44ed-9637-1db33cdda57f")
 	(paper "A4")
+	(title_block
+		(title "Microcontroller RP2350")
+	)
 	(lib_symbols
 		(symbol "RP_Pico:Pico"
 			(exclude_from_sim no)

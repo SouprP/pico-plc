@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "4a1e5f33-3762-40d2-80f9-0ff472a10bed")
 	(paper "A4")
+	(title_block
+		(title "RS-485")
+	)
 	(lib_symbols
 		(symbol "Device:C"
 			(pin_numbers

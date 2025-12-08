@@ -31,7 +31,7 @@ int main() {
     gpio_set_function(16, GPIO_FUNC_UART); // TX
     gpio_set_function(17, GPIO_FUNC_UART); // RX
     
-    ModbusSlave slave(SLAVE_ADDRESS, MD_UART, MD_BAUDRATE, RS485_DE_PIN, RS485_RE_PIN);
+    ModbusSlave slave(SLAVE_ADDRESS, MD_UART, MD_BAUDRATE, RS485_DE_PIN, RS485_RE_PIN, parity);
 
     slave.on_message([&slave](const modbus_frame_t& frame) {
         uint16_t reg0 = 0;

@@ -47,7 +47,7 @@ private:
     void set_transceiver_mode_rx();
 
 public:
-    ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);
+    ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1, ModbusParity parity = ModbusParity::EVEN);
     ~ModbusStream();
 
     void write(const modbus_frame_t* frame);

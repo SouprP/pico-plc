@@ -9,7 +9,7 @@
 // Static member initialization
 ModbusStream* ModbusStream::instance = nullptr;
 
-ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin) 
+ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin, ModbusParity parity) 
     : uart(uart), baudrate(baudrate), de_pin(de_pin), re_pin(re_pin),
       rx_index(0), frame_ready(false), last_rx_time_us(0), tx_in_progress(false) {
 
@@ -37,6 +37,7 @@ ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin, int re_
     
     // calculation of character time in microseconds
     // Modbus RTU character: 1 start bit + 8 data bits + parity + 1 stop bit = 11 bits
+    // If parity is NONE, 2 stop bits are used, so still 11 bits (1 start + 8 data + 2 stop)
     uint32_t char_time_us = (11 * 1000000) / baudrate;
 
     t1_5_us = (char_time_us * 3) / 2;  // 1.5 character times
@@ -49,7 +50,26 @@ ModbusStream::ModbusStream(uart_inst_t* uart, uint baudrate, int de_pin, int re_
     }
 
     uart_init(uart, baudrate);
-    uart_set_format(uart, 8, 1, UART_PARITY_EVEN);
+    
+    // Configure Parity and Stop Bits
+    switch (parity) {
+        case ModbusParity::NONE:
+            // 8 Data bits, No Parity, 2 Stop bits (8N2)
+            uart_set_format(uart, 8, 2, UART_PARITY_NONE);
+            MODBUS_DEBUG_PRINT("[UART] Configured 8N2 (No Parity, 2 Stop Bits)\n");
+            break;
+        case ModbusParity::ODD:
+            // 8 Data bits, Odd Parity, 1 Stop bit (8O1)
+            uart_set_format(uart, 8, 1, UART_PARITY_ODD);
+            MODBUS_DEBUG_PRINT("[UART] Configured 8O1 (Odd Parity, 1 Stop Bit)\n");
+            break;
+        case ModbusParity::EVEN:
+        default:
+            // 8 Data bits, Even Parity, 1 Stop bit (8E1) - Default
+            uart_set_format(uart, 8, 1, UART_PARITY_EVEN);
+            MODBUS_DEBUG_PRINT("[UART] Configured 8E1 (Even Parity, 1 Stop Bit)\n");
+            break;
+    }
     
     // Disable FIFO to ensure immediate interrupts for strict Modbus timing
     // This prevents "perceived gaps" caused by FIFO timeout delays
@@ -99,7 +119,35 @@ void ModbusStream::handle_uart_rx() {
     
     // read all available bytes from FIFO
     while (uart_is_readable(uart) && rx_index < MODBUS_MAX_FRAME_SIZE) {
-        uint8_t byte = uart_getc(uart);
+        // Check for T1.5 violation (inter-character timeout)
+        if (rx_index > 0) {
+            uint64_t current_time = time_us_64();
+            uint64_t elapsed = current_time - last_rx_time_us;
+            
+            if (elapsed > t1_5_us) {
+                // T1.5 violation detected - discard partial frame
+                // The current byte will be treated as the start of a new frame
+                rx_index = 0;
+            }
+        }
+
+        // Read raw data from DR register to get error flags
+        // Bits: 11=OE (Overrun), 10=BE (Break), 9=PE (Parity), 8=FE (Framing)
+        uint32_t dr = uart_get_hw(uart)->dr;
+        
+        if (dr & 0xF00) {
+            // Hardware error detected (Parity, Framing, Overrun, Break)
+            // Modbus spec requires ignoring the frame if a parity/framing error occurs.
+            // We reset the buffer to discard the current frame.
+            reset_rx_buffer();
+            
+            // We continue to read to clear the FIFO, but we don't store the data
+            // Update timestamp to prevent T3.5 from triggering immediately on next byte
+            last_rx_time_us = time_us_64();
+            continue;
+        }
+
+        uint8_t byte = dr & 0xFF;
         rx_buffer[rx_index++] = byte;
         // NOTE: No printf in IRQ handler - it blocks subsequent byte reception!
         
@@ -136,19 +184,6 @@ void ModbusStream::reset_rx_buffer() {
 void ModbusStream::process_received_frame() {
     MODBUS_DEBUG_PRINT("[FRAME] Processing %d bytes\n", rx_index);
     
-    // minimum frame: address + function + CRC (2 bytes) = 4 bytes
-    // Per spec: frames < 3 bytes also count as communication errors
-    if (rx_index < 4) {
-        MODBUS_DEBUG_PRINT("[FRAME] Too short, discarding\n");
-        if (error_callback) {
-            // Create dummy frame for error reporting
-            modbus_frame_t error_frame = {0};
-            error_callback(error_frame);
-        }
-        reset_rx_buffer();
-        return;
-    }
-    
     // filter out obvious noise (all zeros = floating RS485 line)
     // add termination resistors between lines or pull ups / down downs on lines
     bool all_zeros = true;
@@ -160,6 +195,19 @@ void ModbusStream::process_received_frame() {
     }
     if (all_zeros) {
         MODBUS_DEBUG_PRINT("[FRAME] All zeros (floating line noise), discarding\n");
+        reset_rx_buffer();
+        return;
+    }
+
+    // minimum frame: address + function + CRC (2 bytes) = 4 bytes
+    // Per spec: frames < 3 bytes also count as communication errors
+    if (rx_index < 4) {
+        MODBUS_DEBUG_PRINT("[FRAME] Too short, discarding\n");
+        if (error_callback) {
+            // Create dummy frame for error reporting
+            modbus_frame_t error_frame = {0};
+            error_callback(error_frame);
+        }
         reset_rx_buffer();
         return;
     }

@@ -16,7 +16,7 @@ protected:
     void handle_received_frame(const modbus_frame_t& frame) override;
     
 public:
-    ModbusMaster(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1);  // Master has no address
+    ModbusMaster(uart_inst_t* uart, uint baudrate, int de_pin = -1, int re_pin = -1, ModbusParity parity = ModbusParity::EVEN);  // Master has no address
     ~ModbusMaster();
     
     // Send request with callback for response

@@ -4,8 +4,8 @@
 #include <cstring>
 #include <cstdio>
 
-ModbusSlave::ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin, int re_pin)
-    : ModbusBase(uart, baudrate, de_pin, re_pin),
+ModbusSlave::ModbusSlave(uint8_t address, uart_inst_t* uart, uint baudrate, int de_pin, int re_pin, ModbusParity parity)
+    : ModbusBase(uart, baudrate, de_pin, re_pin, parity),
       device_address(address),
       is_broadcast_request(false),
       holding_registers_enabled(false),

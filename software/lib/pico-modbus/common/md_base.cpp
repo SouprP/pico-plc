@@ -4,11 +4,11 @@
 #include <cstring>
 #include <cstdio>
 
-ModbusBase::ModbusBase(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin) {
+ModbusBase::ModbusBase(uart_inst_t* uart, uint baudrate, int de_pin, int re_pin, ModbusParity parity) {
     mutex_init(&tx_queue_mutex);
 
     // UART handler class with RS485 transceiver control
-    stream = std::make_unique<ModbusStream>(uart, baudrate, de_pin, re_pin);
+    stream = std::make_unique<ModbusStream>(uart, baudrate, de_pin, re_pin, parity);
     
     // callback for received frames (called from IRQ!)
     stream->on_frame_received([this](const modbus_frame_t& frame) {

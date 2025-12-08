@@ -27,7 +27,7 @@ int main() {
     gpio_set_function(16, GPIO_FUNC_UART);
     gpio_set_function(17, GPIO_FUNC_UART);
     
-    ModbusMaster master(MD_UART, MD_BAUDRATE, RS485_DE_PIN, RS485_RE_PIN);
+    ModbusMaster master(MD_UART, MD_BAUDRATE, RS485_DE_PIN, RS485_RE_PIN, parity);
     
     printf("Sending one request every 3 seconds...\n\n");
     

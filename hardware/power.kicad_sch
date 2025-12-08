@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "17b8828c-c2e2-43c1-a698-0a0f02f47360")
 	(paper "A4")
+	(title_block
+		(title "Power Supply")
+	)
 	(lib_symbols
 		(symbol "Connector:TestPoint"
 			(pin_numbers

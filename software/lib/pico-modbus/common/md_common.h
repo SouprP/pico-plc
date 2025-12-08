@@ -33,6 +33,12 @@ enum class BaudRate {
     BAUD_115200 = 115200
 };
 
+enum class ModbusParity {
+    NONE,
+    EVEN,
+    ODD
+};
+
 /* Modbus function codes */
 enum class ModbusFunctionCode : uint8_t {
     READ_COILS = 0x01,
@@ -79,9 +85,8 @@ enum class ModbusDiagnosticCode : uint16_t {
 };
 
 template<typename T>
-constexpr auto enum_value(T t){
-    return static_cast<std::underlying_type_t<T>>(t);
-    // return static_cast<typename std::underlying_type<T>::type>(t);
+constexpr auto enum_value(T value){
+    return static_cast<std::underlying_type_t<T>>(value);
 }
 
 uint16_t calculate_crc(const uint8_t* data, size_t length);

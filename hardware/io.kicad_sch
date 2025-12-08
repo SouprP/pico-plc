@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "facf8573-50a9-4f60-86cb-541e6996ed7d")
 	(paper "A4")
+	(title_block
+		(title "Digital IO")
+	)
 	(lib_symbols
 		(symbol "Device:R"
 			(pin_numbers

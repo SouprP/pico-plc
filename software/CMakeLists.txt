@@ -28,7 +28,7 @@ set(LIBS
         pico_rand
         pico_multicore
         hardware_i2c
-        pico_cyw43_arch_none
+#        pico_cyw43_arch_none
         hardware_pwm
 
         pico_utils
@@ -95,8 +95,8 @@ if (NOT DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
 endif ()
 
 # Test .uf2 file
-if (DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
-    add_custom_command(TARGET slave_plc POST_BUILD
-            COMMAND picotool load -f --ser ${SLAVE_ID} -x pico_plc.uf2
-    )
-endif ()
+#if (DEBUG_BUILD AND (${SLAVE_BUILD} OR ${ALL_BUILD}))
+#    add_custom_command(TARGET slave_plc POST_BUILD
+#            COMMAND picotool load -f --ser ${SLAVE_ID} -x pico_plc.uf2
+#    )
+#endif ()

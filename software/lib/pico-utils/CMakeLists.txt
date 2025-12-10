@@ -21,6 +21,8 @@ if(NOT TARGET pico_utils)
             pico_cyw43_arch_none
 
             hardware_pwm
+            hardware_adc
+            hardware_gpio
     )
 
     target_include_directories(pico_utils PUBLIC

@@ -39,6 +39,7 @@ set(LIBS
         hardware_i2c
         pico_cyw43_arch_none
         hardware_pwm
+        hardware_adc
 
         pico_utils
         pico_modbus
@@ -62,7 +63,7 @@ pico_add_extra_outputs(slave_plc)
 pico_add_extra_outputs(pico_plc)
 
 # pico-tool auto-flash command
-set(DEBUG_BUILD 0)
+set(DEBUG_BUILD 1)
 set(ALL_BUILD 0)
 set(SLAVE_BUILD 1)
 set(MASTER_BUILD 1)

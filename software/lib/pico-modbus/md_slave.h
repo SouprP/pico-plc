@@ -58,17 +58,14 @@ public:
     void enable_input_registers(uint16_t size);
     void enable_coils(const std::map<uint16_t, bool>& initial_coils, bool auto_gpio = true);
     void enable_discrete_inputs(const std::map<uint16_t, bool>& initial_inputs);
-    
-    // Manually trigger GPIO sync (called automatically if auto_gpio enabled)
+
     void update_gpio_outputs();
 
-    // Get direct access to registers (for application to write to)
     uint16_t* get_holding_registers() { return holding_registers.get(); }
     uint16_t* get_input_registers() { return input_registers.get(); }
     std::map<uint16_t, bool>* get_coils() { return &coils; }
     std::map<uint16_t, bool>* get_discrete_inputs() { return &discrete_inputs; }
-    
-    // Check if register types are enabled (for function code support)
+
     bool is_holding_registers_enabled() const { return holding_registers_enabled; }
     bool is_input_registers_enabled() const { return input_registers_enabled; }
     bool is_coils_enabled() const { return coils_enabled; }

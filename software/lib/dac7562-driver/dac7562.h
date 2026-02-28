@@ -3,7 +3,6 @@
 
 #include "hardware/spi.h"
 
-// Stałe komend
 #define DAC_CMD_WRITE_INPUT_REG      0b000  // Zapisz do rejestru wejściowego
 #define DAC_CMD_UPDATE_DAC_REG       0b001  // Aktualizuj rejestr DAC
 #define DAC_CMD_WRITE_UPDATE_ALL     0b010  // Zapisz i aktualizuj wszystkie
@@ -13,11 +12,10 @@
 #define DAC_CMD_LDAC_REGISTER        0b110  // Konfiguracja LDAC
 #define DAC_CMD_REFERENCE            0b111  // Sterowanie referencją
 
-// Stałe adresów
-#define DAC_ADDR_A       0b000  // Kanał A
-#define DAC_ADDR_B       0b001  // Kanał B
-#define DAC_ADDR_GAIN    0b010  // Rejestr wzmocnienia
-#define DAC_ADDR_ALL     0b111  // Oba kanały
+#define DAC_ADDR_A       0b000
+#define DAC_ADDR_B       0b001
+#define DAC_ADDR_GAIN    0b010
+#define DAC_ADDR_ALL     0b111
 
 class DAC7562 {
 public:
@@ -28,12 +26,12 @@ public:
            uint ldac_pin,
            uint clr_pin);
 
-    void begin();                   // Inicjalizacja
-    void setA(float voltage);       // 0-2.5V na kanał A
-    void setB(float voltage);       // 0-2.5V na kanał B
-    void setBoth(float voltage);    // 0-2.5V na oba kanały
-    void clear();                   // Zeruj przez CLR
-    void update();                  // Aktualizuj przez LDAC
+    void begin();
+    void setA(float normalized);
+    void setB(float normalized);
+    void setBoth(float normalized);
+    void clear();
+    void update();
 
 private:
     void send(uint8_t cmd, uint8_t addr, uint16_t data);

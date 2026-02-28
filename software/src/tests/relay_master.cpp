@@ -32,18 +32,14 @@ int main() {
     while (true) {
         cycle_count++;
         
-        // Toggle relay every cycle (5 seconds)
+
         relay_state = !relay_state;
-        
-        printf("Cycle %lu: Setting coils %s\n", cycle_count, relay_state ? "ON" : "OFF");
-        
-        // Step 1: Write Multiple Coils (0x0F) to control coils 0 and 1
-        // Coil values are packed in bytes: bit 0 = coil 0, bit 1 = coil 1
+
         uint8_t coil_bytes[1];
         if (relay_state) {
-            coil_bytes[0] = 0x03;  // Binary: 00000011 (both coils ON)
+            coil_bytes[0] = 0x03;
         } else {
-            coil_bytes[0] = 0x00;  // Binary: 00000000 (both coils OFF)
+            coil_bytes[0] = 0x00;
         }
         
         modbus_frame_t write_request = write_multiple_coils_request(SLAVE_ADDRESS, 0, 2, coil_bytes);
@@ -57,17 +53,14 @@ int main() {
         }, 1000);
         
         free_frame(write_request);
-        
-        // Process write response
+
         for (int i = 0; i < 200; i++) {
             master.process_tx_queue();
             sleep_ms(1);
         }
-        
-        // Wait between commands to ensure slave is ready
+
         sleep_ms(500);
-        
-        // Step 2: Read Coils (0x01) to verify state of coils 0 and 1
+
         modbus_frame_t read_request = read_coils_request(SLAVE_ADDRESS, 0, 2);
         
         master.send_request(read_request, [](const modbus_frame_t& response) {
@@ -84,16 +77,12 @@ int main() {
         }, 1000);
         
         free_frame(read_request);
-        
-        // Process read response
+
         for (int i = 0; i < 200; i++) {
             master.process_tx_queue();
             sleep_ms(1);
         }
-        
-        // Wait before next toggle
+
         sleep_ms(4100);
     }
-    
-    return 0;
 }

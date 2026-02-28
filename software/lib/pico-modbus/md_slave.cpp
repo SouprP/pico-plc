@@ -33,7 +33,7 @@ void ModbusSlave::handle_received_frame(const modbus_frame_t& frame) {
     is_broadcast_request = (frame.address == 0);
     uint8_t func = frame.function_code;
     
-    // Parse common request fields
+    // Parse request fields
     uint16_t start_addr = 0;
     uint16_t count = 0;
     if (frame.data_length >= 4) {

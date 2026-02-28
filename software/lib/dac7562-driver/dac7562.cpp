@@ -18,11 +18,9 @@ DAC7562::DAC7562(spi_inst_t* spi_instance,
 }
 
 void DAC7562::begin() {
-    // Inicjalizacja SPI (20 MHz)
     spi_init(spi_, 20 * 1000 * 1000);
     spi_set_format(spi_, 8, SPI_CPOL_0, SPI_CPHA_1, SPI_MSB_FIRST);
 
-    // Konfiguracja pinów
     gpio_set_function(sck_pin_, GPIO_FUNC_SPI);
     gpio_set_function(mosi_pin_, GPIO_FUNC_SPI);
 
@@ -39,15 +37,15 @@ void DAC7562::begin() {
     gpio_put(clr_pin_, 1);
 
     // Włącz referencję 2.5V i ustaw gain=1
-    send(DAC_CMD_REFERENCE, DAC_ADDR_A, 0x0001);  // Włącz ref
-    send(DAC_CMD_WRITE_INPUT_REG, DAC_ADDR_GAIN, 0x0003); // Gain=1 dla obu
+    send(DAC_CMD_REFERENCE, DAC_ADDR_A, 0x0001);
+    send(DAC_CMD_WRITE_INPUT_REG, DAC_ADDR_GAIN, 0x0003); // Gain=1
 
     // Ustaw synchroniczną aktualizację (LDAC niepotrzebny)
     send(DAC_CMD_LDAC_REGISTER, DAC_ADDR_A, 0x0003);
+    send(DAC_CMD_LDAC_REGISTER, DAC_ADDR_B, 0x0003);
 }
 
 void DAC7562::send(uint8_t cmd, uint8_t addr, uint16_t data) {
-    // 24-bitowa ramka: [2 don't care][3 cmd][3 addr][12 data][4 zero]
     uint32_t frame = (uint32_t(cmd) << 19) | (uint32_t(addr) << 16) | (data << 4);
 
     uint8_t tx[3] = {
@@ -61,21 +59,27 @@ void DAC7562::send(uint8_t cmd, uint8_t addr, uint16_t data) {
     gpio_put(cs_pin_, 1);
 }
 
-void DAC7562::setA(float voltage) {
+void DAC7562::setA(float normalized) {
+    float voltage = normalized * 2.5f;
+
     if (voltage < 0) voltage = 0;
     if (voltage > 2.5) voltage = 2.5;
     uint16_t code = uint16_t((voltage / 2.5) * 4095);
     send(DAC_CMD_WRITE_UPDATE_N, DAC_ADDR_A, code);
 }
 
-void DAC7562::setB(float voltage) {
+void DAC7562::setB(float normalized) {
+    float voltage = normalized * 2.5f;
+
     if (voltage < 0) voltage = 0;
     if (voltage > 2.5) voltage = 2.5;
     uint16_t code = uint16_t((voltage / 2.5) * 4095);
     send(DAC_CMD_WRITE_UPDATE_N, DAC_ADDR_B, code);
 }
 
-void DAC7562::setBoth(float voltage) {
+void DAC7562::setBoth(float normalized) {
+    float voltage = normalized * 2.5f;
+
     if (voltage < 0) voltage = 0;
     if (voltage > 2.5) voltage = 2.5;
     uint16_t code = uint16_t((voltage / 2.5) * 4095);

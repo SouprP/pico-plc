@@ -2,40 +2,24 @@
 #include <cstdlib>
 #include "pico/stdlib.h"
 
-// Debug messages are enabled via global flag
-// #define MODBUS_DEBUG // No longer used
-
 #include "defines.h"
 #include "pico-modbus/md_master.h"
 #include "pico-modbus/common/md_common.h"
 
-// #define MASTER_UART uart0
-// #define MASTER_BAUDRATE MD_BAUDRATE
 
 int main() {
     stdio_init_all();
     sleep_ms(2000);
-    
-    // Enable Modbus debug output
-    // modbus_debug_enabled = true;
-    
-    printf("\n=== Modbus Master - Multicore Slave Example ===\n");
-    printf("UART: %s, Baudrate: %d\n", MD_UART == uart0 ? "UART0" : "UART1", MD_BAUDRATE);
-    printf("Pins: TX=GP16, RX=GP17\n");
-    printf("RS485: DE=GP%d, RE=GP%d (SN65HVD75DGKR)\n\n", RS485_DE_PIN, RS485_RE_PIN);
-    
+
     gpio_set_function(16, GPIO_FUNC_UART);
     gpio_set_function(17, GPIO_FUNC_UART);
     
     ModbusMaster master(MD_UART, MD_BAUDRATE, RS485_DE_PIN, RS485_RE_PIN, parity);
-    
-    printf("Sending one request every 3 seconds...\n\n");
-    
+
     uint8_t request_type = 0;
     static bool coil_state = false;
     
     while (true) {
-        // Cycle through different request types
         switch (request_type) {
             case 0:
                 printf("--- Reading Register 0 ---\n");
@@ -71,8 +55,7 @@ int main() {
                     }, 5000);
                 break;
         }
-        
-        // Wait for request to complete
+
         while (master.is_request_pending()) {
             master.process_tx_queue();
             sleep_ms(1); // 1ms polling interval
@@ -85,13 +68,10 @@ int main() {
         
         // Move to next request type
         request_type = (request_type + 1) % 3;
-        
-        // Keep processing during delay to handle any late responses
+
         for (int i = 0; i < 3000; i++) {
             master.process_tx_queue();
             sleep_ms(1);
         }
     }
-    
-    return 0;
 }
